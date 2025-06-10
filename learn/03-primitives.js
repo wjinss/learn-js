@@ -20,9 +20,9 @@
 
 // 문자열 연결(String Concatenation)
 // '나의 100m 달리기" + " 최고 기록은 12\'26\"이야.'
-console.log("나의 100m 달리기 " + "최고 기록은 12'26\"이야.");
-console.log("나의 100m 달리기" + " 최고 기록은 12'26\"이야.");
-console.log("나의 100m 달리기" + " " + "최고 기록은 12'26\"이야.");
+// console.log("나의 100m 달리기 " + "최고 기록은 12'26\"이야.");
+// console.log("나의 100m 달리기" + " 최고 기록은 12'26\"이야.");
+// console.log("나의 100m 달리기" + " " + "최고 기록은 12'26\"이야.");
 
 // ---------------------------------------------
 // Number
@@ -34,13 +34,13 @@ console.log("나의 100m 달리기" + " " + "최고 기록은 12'26\"이야.");
 // 산술 연산(숫자 간 처리)
 // +,-,*,/,%
 
-console.log(1000000 + 23122);
-console.log(1000000 - 23122);
-console.log(1000000 * 23122);
-console.log(1000000 / 23122);
+// console.log(1000000 + 23122);
+// console.log(1000000 - 23122);
+// console.log(1000000 * 23122);
+// console.log(1000000 / 23122);
 
-console.log(Number.MIN_SAFE_INTEGER);
-console.log(Number.MAX_SAFE_INTEGER);
+// console.log(Number.MIN_SAFE_INTEGER);
+// console.log(Number.MAX_SAFE_INTEGER);
 
 // ---------------------------------------------
 // Boolean
@@ -49,3 +49,11 @@ console.log(Number.MAX_SAFE_INTEGER);
 true;
 
 false;
+
+// ---------------------------------------------
+// undefined
+// ---------------------------------------------
+
+undefined;
+
+console.log(undefined);
