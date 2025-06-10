@@ -41,3 +41,11 @@ console.log(1000000 / 23122);
 
 console.log(Number.MIN_SAFE_INTEGER);
 console.log(Number.MAX_SAFE_INTEGER);
+
+// ---------------------------------------------
+// Boolean
+// ---------------------------------------------
+
+true;
+
+false;
