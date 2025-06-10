@@ -39,3 +39,18 @@ function 함수이름() {
 // 2. 알파벳 a~z, A~Z 숫자 0~9, 특수문자 $, _로 구성
 // 3. 숫자로 시작할 수 없다
 // 4. 예약어는 사용할 수 없다
+
+// ---------------------------
+// 매겨변수(Parameters)
+
+// 함수 선언
+function writeDiary() {
+  // 함수 내부에 선언된 변수 > 함수 안에서 사용
+
+  let year = 2025;
+  let month = 6;
+  let date = 10;
+
+  console.log(year + "년 " + month + "월 " + date + "일에 일기를 쓴다.");
+}
+writeDiary();
