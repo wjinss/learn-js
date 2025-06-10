@@ -44,13 +44,18 @@ function 함수이름() {
 // 매겨변수(Parameters)
 
 // 함수 선언
-function writeDiary() {
+function writeDiary(year, month, date, location) {
   // 함수 내부에 선언된 변수 > 함수 안에서 사용
-
-  let year = 2025;
-  let month = 6;
-  let date = 10;
-
-  console.log(year + "년 " + month + "월 " + date + "일에 일기를 쓴다.");
+  console.log(
+    year +
+      "년 " +
+      month +
+      "월 " +
+      date +
+      "일 " +
+      location +
+      "에 다녀온 일기를 쓴다."
+  );
 }
-writeDiary();
+writeDiary(2025, 6, 15, "국립 중앙 박물관");
+writeDiary(2025, 8, 19, "을지로");
