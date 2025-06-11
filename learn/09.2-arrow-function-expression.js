@@ -80,3 +80,47 @@ const ROOT_FONT_SIZE = 16
 let px2rem =  pxValue =>  pxValue / ROOT_FONT_SIZE + "rem"
 
 console.log(px2rem(28));
+
+ //객체를 반환하는 함수Add commentMore actions
+// 함수 선언
+// function getStyles() {
+//   let cssStyles = {
+//     'display': 'grid',
+//     'row-gap': 24
+//   }
+
+//   return cssStyles
+// }
+
+// 함수 표현식
+// let getStyles = function () {
+//   let cssStyles = {
+//     'display': 'grid',
+//     'row-gap': 24
+//   }
+
+//   return cssStyles
+// }
+
+// 화살표 함수 표현식
+let getStyles1 = _ => { 
+  return {
+    'display': 'grid',
+    'row-gap': 24
+  }
+}
+
+// let getStyles = _ => (객체값에중괄호가포함되면문법오류)
+let getStyles = () => ({
+  'display': 'grid',
+  'row-gap': 24
+})
+
+// function getStyles() {
+//   return {
+//     'display': 'grid',
+//     'row-gap': 24Add commentMore actions
+//   }
+// }
+
+console.log(getStyles())
