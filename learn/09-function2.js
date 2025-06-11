@@ -65,6 +65,36 @@ function totalPizzaPrice(pizzaPrice, pizzaCount) {
 }
 console.log(totalPizzaPrice(2, 4200));
 
-function parkingLotPrice(time, totalPrice) {
-  return time / totalPrice;
+let parkingLotPrice = function (time) {
+  const PRICE = 1000;
+  return `${time}시간 요금은 ` + time * PRICE + "원 입니다";
+};
+console.log(parkingLotPrice(4.5));
+
+let oddOrEven = function (num) {
+  return num % 2 === 0 ? true : false;
+};
+console.log(oddOrEven(8));
+
+function birthCongratulate(name) {
+  return `생일 축하해! ${name}아!`;
 }
+console.log(birthCongratulate("우진아"));
+
+let dDay = (day) => {
+  const DAYS_OF_YEAR = 365;
+  return `1년 중 남은 일 수는 ${DAYS_OF_YEAR - day}일 입니다`;
+};
+console.log(dDay(120));
+
+let isTaxed = (itemPrice) => {
+  const TAX_RATE = 1.03;
+  return `최종 금액은 ${itemPrice * TAX_RATE}원 입니다`;
+};
+console.log(isTaxed(1200));
+
+let isAdult = (age) => {
+  const ADULT_AGE = 19;
+  return age >= ADULT_AGE ? "출입 가능" : "출입 불가능";
+};
+console.log(isAdult(18));
