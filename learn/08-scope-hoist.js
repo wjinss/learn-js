@@ -30,7 +30,15 @@ function fn() {
 // var변수 호이스트
 // ---------------------------
 // var변수 선언
-console.log(myName); // undefined
-var myName = "wjinss";
-console.log(myName);
+// console.log(myName); // undefined
+// var myName = "wjinss";
+// console.log(myName);
 // var 변수 선언은 마치 끌어올려진 것처럼 보이는데 선언부만 끌어올려진 것처럼 작동한다.
+
+// ---------------------------
+// let변수 호이스트
+// ---------------------------
+
+console.log(myName);
+let myName = "wjinss";
+console.log(myName);
