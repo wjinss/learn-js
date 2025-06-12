@@ -89,7 +89,7 @@ console.log(px2rem(28));
 //     'row-gap': 24
 //   }
 
-//   return cssStyles
+//  return cssStyles
 // }
 
 // 함수 표현식
@@ -124,3 +124,31 @@ let getStyles = () => ({
 // }
 
 console.log(getStyles())
+
+// --------------------------------
+const ten =()=> 10
+console.log(ten());
+
+const logger = message=> "로그 메시지: " + message
+console.log(logger('화살표 함수 표현식은 매우 유용해요!'));
+
+const pxToRem = (px)=>{
+  return px / 16 + "rem"
+}
+console.log(pxToRem(22));
+
+const pxToRem2 = px=> px / 16 + "rem"
+console.log(pxToRem2(28));
+
+const PERCENTAGE_RATE = 100
+
+const percentage = (numerator, denominator)=>{
+  return numerator / denominator * PERCENTAGE_RATE + "%"
+}
+console.log(percentage(360, 1280));
+
+const percentage2 = (numerator, denominator)=> numerator / denominator * PERCENTAGE_RATE + "%"
+console.log(percentage2(360, 1280));
+
+// 화살표 함수 표현식으로 사용할 때 let이 아닌, const를 사용하는 이유
+// 
