@@ -117,3 +117,10 @@ MacBookProM1.getSerialNumber =()=>{
 
 console.log(MacBookProM1.getSerialNumber());
 console.log(MacBookProM1['getSerialNumber']());
+
+// 메서드 정의 (매개변수 포함)
+MacBookProM1.playMusic = function(songTitle){
+  return `${songTitle} 재생을 시작합니다. `;
+}
+// 메서드 사용
+console.log(MacBookProM1.playMusic('사랑하게 될거야'));
