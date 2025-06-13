@@ -13,19 +13,35 @@
     <script type="module" src="./assets/scripts/learn/24-DOM.js"></script>
   </head>
   <body>
-    <h1>JavaScript 학습</h1>
-
-    <ul>
-      <li class="item"><a href="#">javascript</a></li>
-      <li class="item"><a href="#">html</a></li>
-      <li class="item"><a href="#">css</a></li>
-    </ul>
-    <form>
-      <div>
-        <label for="useremail">이메일</label>
-        <input type="email" id="useremail" name="email" placeholder="user@company.io" />
-      </div>
-      <button type="submit">보내기</button>
-    </form>
+    <div id="app">
+      <h1>JavaScript 학습</h1>
+      <ul>
+        <li class="item"><a href="#">javascript</a></li>
+        <li class="item"><a href="#">html</a></li>
+        <li class="item"><a href="#">css</a></li>
+      </ul>
+      <form>
+        <div>
+          <label for="useremail">이메일</label>
+          <input
+            type="email"
+            id="useremail"
+            name="email"
+            placeholder="user@company.io"
+          />
+        </div>
+        <button type="submit">보내기</button>
+      </form>
+      <ol class="musicians">
+        <li>드렁큰 타이커</li>
+        <li>다이내믹 듀오</li>
+        <li>소울 딜리버리</li>
+      </ol>
+      <ul id="exorcist-characters">
+        <li class="character yo-han" data-type="hero">박요한</li>
+        <li class="character master-choi" data-type="master">최강림</li>
+        <li class="character villain-ghost" data-type="villain">악령</li>
+      </ul>
+    </div>
   </body>
 </html>

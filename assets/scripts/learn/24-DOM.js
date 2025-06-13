@@ -7,26 +7,41 @@
 // document.getElementsByTagName()
 
 // console.log(document.getElementsByTagName('h1'));
-const emailInput = document.getElementById('useremail');
+const emailInput = document.getElementById("useremail");
 
 console.log(emailInput);
 
 // document.getElementsByName('name');
-document.getElementsByName('email')
+document.getElementsByName("email");
 
 // document.getElementsByClassName(ClassName)
-const items = document.getElementsByClassName('item')
+const items = document.getElementsByClassName("item");
 console.log(items);
 
 // document.querySelector()
-const elementById = document.querySelector('#useremail')
+const elementById = document.querySelector("#useremail");
 console.log(elementById);
 
-const elementByName = document.querySelector('[name="email"]')
+const elementByName = document.querySelector('[name="email"]');
 console.log(elementByName);
 
-const elementByClassName = document.querySelector('.item')
+const elementByClassName = document.querySelector(".item");
 console.log(elementByClassName);
 
-const elementByTagName = document.querySelector('li')
+const elementByTagName = document.querySelector("li");
 console.log(elementByTagName);
+
+const app = document.getElementById("app");
+const appFirstListItem = app.querySelector("li.item");
+console.log(appFirstListItem);
+
+// ------------------------------------
+const characters = document.querySelector("#exorcist-characters");
+console.log(characters);
+
+const yoHan = characters.querySelector(".yo-han");
+console.log(yoHan);
+const masterChoi = characters.querySelector(".master-choi");
+console.log(masterChoi);
+const villain = characters.querySelector(".villain-ghost");
+console.log(villain);
