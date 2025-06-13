@@ -37,17 +37,33 @@ console.log(toBiAndHex(255))
 // --------------------------------------------------------------------------
 
 // 단위 제거
-// ...
+console.log(parseInt('24px'));
+console.log(parseFloat('1.625rem'));
+console.log(parseInt('260mm'));
+
 
 // 단위 제거 함수 작성
-// ...
+const removeUnit = num => parseFloat(num)
+
+console.log(removeUnit('10px'));
 
 
 // 2진수 문자열 -> 10진수 변경
-// ...
+console.log(parseInt('10', 2));
+console.log(parseInt('100', 2));
+
 
 // 16진수 문자열 -> 10진수 변경
-// ...
+console.log(parseInt('00', 16));
+console.log(parseInt('80', 16));
+console.log(parseInt('a0', 16));
+console.log(parseInt('b0', 16));
+console.log(parseInt('de', 16));
+console.log(parseInt('ff', 16));
+
 
 // 16진수 문자열을 10진수로 변경하는 함수 작성
-// ...
+const hexToDec = hex => parseInt(hex, 16) 
+console.log(hexToDec('ff'));
+console.log(hexToDec('80'));
+
