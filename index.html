@@ -10,37 +10,32 @@
     <link rel="stylesheet" href="./assets/styles/main.css" />
     <link rel="icon" href="./assets/images/ecmascript-logo.png" />
     <!-- JavaScript  MIME 타입 (기본값 text/javascript 생략가능) -->
-    <script
+    <!-- <script
       type="module"
       src="./assets/scripts/learn/26-change-class-properties.js"
-    ></script>
+    ></script> -->
   </head>
   <body>
     <div id="app">
       <h1>JavaScript 학습</h1>
-
-      <ul id="exorcist-characters">
-        <li class="character yo-han" data-type="hero">박요한</li>
-        <li class="character master-choi" data-type="master">최강림</li>
-        <li class="character villain-ghost" data-type="villain">악령</li>
-      </ul>
-
-      <p class="add">단락에 "text-primary" 클래스 이름을 추가해 주세요!</p>
-
-      <p class="remove">단락에서 "remove" 클래스 이름을 제거해 주세요!</p>
-
-      <p class="contains1">
-        단락은 "text-primary" 클래스 이름을 가지고 있나요?
-      </p>
-
-      <p class="contains2 text-primary">
-        단락은 "text-primary" 클래스 이름을 가지고 있나요?
-      </p>
-
-      <p class="toggle">
-        단락은 "text-primary" 이름을 가지고 있나요? 있다면 삭제하고, 없다면
-        추가해 주세요.
-      </p>
+      <button type="button" class="clickable">클릭 가능한 요소</button>
     </div>
+    <script>
+      // const clickableBtn = document.querySelector(".clickable");
+      // clickableBtn.addEventListener(
+      //   // event type(string)
+      //   "click",
+      //   // event listener(function)
+      //   () => {
+      //     console.log("clicked clickable button");
+      //   }
+      // );
+
+      const clickableBtn = document.querySelector(".clickable");
+      clickableBtn.addEventListener("click", () => {
+        document.body.classList.toggle("is-active");
+        clickableBtn.classList.toggle("is-active");
+      });
+    </script>
   </body>
 </html>
