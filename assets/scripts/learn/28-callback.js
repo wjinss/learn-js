@@ -45,3 +45,21 @@ btn.onclick = function () {
 btn.onclick = function () {
   btn.classList.toggle("is-active");
 };
+
+// 비동기처리
+const handelBodyToggleClass = () => {
+  console.log(`해당 함수는 나중에 실행되므로 콜백!`);
+};
+btn.addEventListener("click", handelBodyToggleClass);
+
+const handelBtnToggleClass = () => {
+  console.log(`두번째 연결된 콜백!`);
+};
+btn.addEventListener("click", handelBtnToggleClass);
+
+// 동기처리
+handelBtnToggleClass(); // 1
+handelBtnToggleClass(); // 2
+handelBtnToggleClass(); // 3
+handelBtnToggleClass(); // 4
+handelBtnToggleClass(); // 5
