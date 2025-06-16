@@ -1,9 +1,9 @@
 body {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  min-block-size: 100vh;
+  min-block-size: 100dvh;
   background-color: var(--bg-color);
   color: var(--fg-color);
   margin: 0;
@@ -12,4 +12,19 @@ body {
 h1 {
   font-weight: 200;
   font-size: 2.65rem;
-} 
+}
+
+#exorcist-characters {
+  list-style: none;
+  padding-inline-start: 0;
+  text-align: center;
+
+  li {
+    padding: 4px;
+
+    &.active {
+      font-weight: 90;
+      color: var(--gray-50);
+    }
+  }
+}
