@@ -10,32 +10,15 @@
     <link rel="stylesheet" href="./assets/styles/main.css" />
     <link rel="icon" href="./assets/images/ecmascript-logo.png" />
     <!-- JavaScript  MIME 타입 (기본값 text/javascript 생략가능) -->
-    <!-- <script
+    <script
       type="module"
-      src="./assets/scripts/learn/26-change-class-properties.js"
-    ></script> -->
+      src="./assets/scripts/learn/27-event-listening.js"
+    ></script>
   </head>
   <body>
     <div id="app">
       <h1>JavaScript 학습</h1>
       <button type="button" class="clickable">클릭 가능한 요소</button>
     </div>
-    <script>
-      // const clickableBtn = document.querySelector(".clickable");
-      // clickableBtn.addEventListener(
-      //   // event type(string)
-      //   "click",
-      //   // event listener(function)
-      //   () => {
-      //     console.log("clicked clickable button");
-      //   }
-      // );
-
-      const clickableBtn = document.querySelector(".clickable");
-      clickableBtn.addEventListener("click", () => {
-        document.body.classList.toggle("is-active");
-        clickableBtn.classList.toggle("is-active");
-      });
-    </script>
   </body>
 </html>
