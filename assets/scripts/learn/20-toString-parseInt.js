@@ -52,6 +52,8 @@ console.log(removeUnit('10px'));
 console.log(parseInt('10', 2));
 console.log(parseInt('100', 2));
 
+// 8진수 문자열 -> 10진수 변경
+console.log(parseInt('20', 8));
 
 // 16진수 문자열 -> 10진수 변경
 console.log(parseInt('00', 16));

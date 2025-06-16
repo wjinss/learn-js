@@ -19,7 +19,7 @@ const items = document.getElementsByClassName("item");
 console.log(items);
 
 // document.querySelector()
-const elementById = document.querySelector("#useremail");
+const elementById = document.querySelector("#useremail"); // id = # 
 console.log(elementById);
 
 const elementByName = document.querySelector('[name="email"]');
@@ -31,6 +31,11 @@ console.log(elementByClassName);
 const elementByTagName = document.querySelector("li");
 console.log(elementByTagName);
 
-const app = document.getElementById("app");
-const appFirstListItem = app.querySelector("li.item");
-console.log(appFirstListItem);
+// const app = document.getElementById("app");
+// const appFirstListItem = app.querySelector("li.item");
+// console.log(appFirstListItem);
+
+const app = document.querySelector('[name="email"]')
+// document.querySelector('#exorcist-characters') // html 최상단부터 시작
+app.querySelector('#exorcist-characters') // #app부터 시작
+

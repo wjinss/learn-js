@@ -24,7 +24,7 @@ h1 {
 
     &.active {
       font-weight: 90;
-      color: var(--gray-50);
+      color: var(--blue-100);
     }
   }
 }

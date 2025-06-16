@@ -10,6 +10,11 @@ console.log(choi.className);
 
 // 클래스 조작 비교적 최신 방식
 const yoHan = exorcist.querySelector(".yo-han");
+
 yoHan.classList.add("active");
 yoHan.classList.remove("character");
+yoHan.classList.contains("character"); // 변수가 있냐 없냐를 찾는데 
+yoHan.classList.toggle("character")
+
+
 console.log(yoHan.classList.value);
