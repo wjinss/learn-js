@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "live-server . --port=4000 --host=localhost --no-browser"
+    "dev": "pnpx live-server --port=3001"
   },
   "dependencies": {
     "live-server": "^1.2.2"
