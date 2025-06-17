@@ -46,7 +46,7 @@ btn.onclick = function () {
   btn.classList.toggle("is-active");
 };
 
-// 비동기처리
+// 비동기처리 > ㅂ코드가 바로 실행되지 않고,
 const handelBodyToggleClass = () => {
   console.log(`해당 함수는 나중에 실행되므로 콜백!`);
 };
@@ -57,9 +57,22 @@ const handelBtnToggleClass = () => {
 };
 btn.addEventListener("click", handelBtnToggleClass);
 
-// 동기처리
+// 동기처리 > 코드 실행 완료될 때까지 다음 코드를 차단(블로킹)
 handelBtnToggleClass(); // 1
 handelBtnToggleClass(); // 2
 handelBtnToggleClass(); // 3
 handelBtnToggleClass(); // 4
 handelBtnToggleClass(); // 5
+
+function greet() {
+  console.log("안녕!");
+}
+
+function respond() {
+  return setTimeout(() => {
+    console.log("헤이!!");
+  }, 2000);
+}
+
+respond();
+greet();
