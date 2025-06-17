@@ -8,12 +8,21 @@
 }
 
 .modal-overlay {
+  opacity: 0;
+  z-index: -1;
+  position: fixed;
+  inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1em;
   background-color: var(--modal-overlay-background-color);
-
+  &.modal-open {
+    z-index: 10000;
+    opacity: 1;
+  }
+  /* 선택자를 &.modal-open로 줘서 해당 클래스의 상위 요소(야무쌤은 body)에 
+    클래스를 직접 줘서 관리하는 방법도 가능 */
   .modal-dialog {
     display: grid;
     place-items: center;
@@ -25,7 +34,7 @@
     min-inline-size: 50vmin;
     min-block-size: 50vmin;
   }
-  
+
   .modal-close-button {
     .modal-dialog:hover & {
       opacity: 1;
@@ -41,7 +50,7 @@
     border: 2px solid var(--dialog-close-button-background-color);
     background: var(--dialog-close-button-background-color);
     color: var(--dialog-close-button-color);
-    
+
     &:hover,
     &:active,
     &:focus {
@@ -51,7 +60,3 @@
     }
   }
 }
-
-
-
-

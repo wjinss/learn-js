@@ -4,7 +4,7 @@
   border-radius: 4px;
   background-color: var(--button-background-color);
   color: var(--button-text-color);
-  
+
   &:hover,
   &:active {
     background-color: var(--button-hover-background-color);
