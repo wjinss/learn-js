@@ -62,3 +62,148 @@ const 멋사14기_수강생 = [
 
 // 객체 타입 판별하는 방법 > findIndex 사용
 멋사14기_수강생.findIndex((수강생) => 수강생.이름 === "김민지"); // 1
+const nestedArray = [
+  [1, 2, 3],
+  ["one", "three", "four"],
+];
+
+nestedArray.findIndex((item) => {
+  return item.at(0) === 1;
+});
+
+nestedArray.findIndex((item) => {
+  return item.at(0) === "one";
+});
+
+// 배열에 항목 추가
+// ------------------------------------
+
+// 1. 시작 위치에 새 항목 추가 > unshift()
+{
+  const length = 멋사14기_수강생.unshift({ 이름: "신남일" });
+  console.log(length);
+}
+{
+  console.log(JS_학습_주제);
+  console.log(JS_학습_주제.unshift("디버깅", "린터", "배열 메서드"));
+  console.log(JS_학습_주제);
+}
+// 2. 끝 위치에 새 항목 추가 > push()
+{
+  멋사14기_수강생.push({ 이름: "장효정" });
+  console.log(멋사14기_수강생);
+}
+{
+  JS_학습_주제.push(
+    ".indexOf()",
+    ".findIndex()",
+    ".at()",
+    ".unshift()",
+    ".push()"
+  );
+  console.log(JS_학습_주제);
+}
+
+// 배열에 항목 제거
+// ------------------------------------
+
+const counts = [101, 201, 301, 401, 501];
+console.log({ counts }); // === console.log({ 'counts': counts });
+
+// 1. 시작 위치의 항목 추가 > shift() > 원본 배열을 수정한다.
+const removeFirstItem = counts.shift();
+console.log({ removeFirstItem });
+console.log({ counts });
+
+// 여러 항목을 맨 앞에서 순차적으로 제거
+console.log(멋사14기_수강생);
+const shin = 멋사14기_수강생.shift();
+const beom = 멋사14기_수강생.shift();
+console.log(shin); // 첫 번째 항목
+console.log(beom); // 첫 번째 항목
+console.log(멋사14기_수강생); //남은 수강생 목록
+
+// 2. 끝 위치의 항목 제거 > pop()
+console.log(멋사14기_수강생);
+
+const jang = 멋사14기_수강생.pop();
+const jo = 멋사14기_수강생.pop();
+
+console.log(jang);
+console.log(jo);
+console.log(멋사14기_수강생);
+
+const numbers = [9, 10, 3, 4, 7, 8];
+// 추가 및 제거 방법을 사용해 아래 결과를 만들어 보세요.
+// [1, 2, 3, 4, 5, 6]
+// numbers.shift();
+// numbers.shift();
+numbers.splice(0, 2);
+// numbers.unshift(1, 2);
+numbers.splice(0, 0, 1, 2);
+// numbers.pop();
+// numbers.pop();
+numbers.splice(numbers.length - 2, 2);
+// numbers.push(5, 6);
+numbers.splice(numbers.length, 0, 5, 6);
+console.log(numbers);
+
+// ------------------------------------
+// 배열 중간에 새 항목 추가 or 삭제
+// .splice() 메서드 : 추가, 삭제, 교체
+
+// 중간에 포함된 항목을 삭제
+// splice(시작 인덱스, 삭제할 개수)
+// const removedItems = numbers.splice(2, 2);
+// console.log(removedItems);
+// console.log(numbers);
+
+// 중간에 새 항목 추가
+// console.log(numbers);
+// numbers.splice(3, 0, 100, 101, 102);
+// console.log(numbers);
+// 중간에 포함된 항목을 삭제하고, 새 항목을 추가
+
+// ------------------------------------
+// 배열의 원소를 잘라 새 배열을 반환
+// .slice(startIndex, endIndex) > 시작 인덱스부터 끝 이전 인덱스까지 퐇마한 새 배열반환
+// 배열 복제
+// .slice > 통째로 모두 잘라서 새 배열 반환
+const people = ["세종대왕", "이순신", "김구", "유관순", "장영실", "신사임당"];
+
+// 1. people 배열에서 '이순신' 항목의 인덱스를 확인합니다.
+console.log(people.indexOf("이순신"));
+
+// 2. people 배열 시작 위치에 '정약용', '지석영'을 추가합니다.
+//     1. `unshift()` 활용
+// console.log(people.unshift("정약용", "지석영"));
+//     2. `splice()` 활용
+console.log(people.splice(0, 0, "정약용", "지석영"));
+
+// 3. people 배열 끝 위치에 '김유신', '을지문덕'을 추가합니다.
+//     1. `push()` 활용
+// console.log(people.push("김유신", "을지문덕"));
+//     2. `splice()` 활용
+console.log(people.splice(people.length, 0, "김유신", "을지문덕"));
+
+// 4. people 배열 시작 위치에서 '세종대왕', '이순신'을 제거합니다.
+//     1. `shift()` 활용
+// console.log(people.shift());
+// console.log(people.shift());
+
+//     2. `splice()` 활용
+console.log(people.splice(0, 1));
+
+// 5. people 배열 끝 위치에서 '장영실', '신사임당'을 제거합니다.
+//     1. `pop()` 활용
+// console.log(people.pop());
+// console.log(people.pop());
+
+//     2. `splice()` 활용
+console.log(people.splice(people.length - 2, 2));
+
+// 6. people을 복제한 새로운 배열을 생성하고, people에서 '이순신','김구'로 새로운 집합을 생성
+const newPeople = people.slice(1, 3);
+
+console.log(people);
+console.log(newPeople);
