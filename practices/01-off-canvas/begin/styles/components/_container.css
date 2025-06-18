@@ -18,8 +18,6 @@
 .offsite-is-open {
   .offsite-container,
   .site-container {
-    /* CSS Transform */
-    /* transform: translateX(14rem); */
     translate: 14rem 0;
   }
 }
