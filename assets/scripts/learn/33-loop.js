@@ -60,6 +60,7 @@ if (wantToDraw) {
 
 // ----------------------------
 // 흐름 제어(continue, break)
+
 (() => {
   let drawCount = 20;
   let i = 0;
@@ -67,12 +68,20 @@ if (wantToDraw) {
   const draw = (n) => {
     console.log("도화지에 그림을 그린 횟수 = " + i);
   };
+  // continue > 건너뛰기
+  // while (i++ < drawCount /* 0 ~ 19 */) {
+  //   if (i > 10 && i <= 15) {
+  //     continue;
+  //   }
+  //   draw(i);
+  // }
 
+  //break > 종료시키기
   while (i++ < drawCount /* 0 ~ 19 */) {
-    if (i > 10 && i <= 15) {
-      continue;
+    if (i === 5) {
+      break;
     }
-    draw();
+    draw(i);
   }
 
   console.log("last i =", i);
