@@ -157,7 +157,7 @@ if (wantToDraw) {
   }
 };
 
-(() => {
+() => {
   const fruitBasket = ["체리망고", "토마토", "스트로베리"];
   const students = [
     { 이름: "홍민영" },
@@ -183,4 +183,48 @@ if (wantToDraw) {
     console.log(students[i]["이름"]);
   }
   console.timeEnd("역순환");
+};
+
+// ----------------------------
+// 반복문 for..of
+() => {
+  const students = [
+    { 이름: "홍민영" },
+    { 이름: "윤정화" },
+    { 이름: "허시온" },
+    { 이름: "조선현" },
+    { 이름: "성정현" },
+    { 이름: "조장원" },
+    { 이름: "김민지" },
+    { 이름: "고우현" },
+  ];
+
+  for (let arr of students) {
+    // if (arr.이름 === "조장원") break;
+    // console.log(arr.이름);
+
+    if (arr.이름 === "조장원" || arr.이름 === "김민지") continue;
+    console.log(arr.이름);
+  }
+};
+(() => {
+  const webTech = {
+    html: "hyper text markup language",
+    css: "cascading style sheet",
+    javascript: "programming language",
+  };
+
+  console.log(webTech);
+  // for문 (객체에서 활용하지 않음)
+  // for ...of문 (객체에서 활용하지 않음)
+
+  // 객체 전용 순환
+  // for ...in문
+  for (const key in webTech) {
+    const value = webTech[key];
+    console.log({
+      key: key,
+      value: value,
+    });
+  }
 })();
