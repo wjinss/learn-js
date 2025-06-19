@@ -130,17 +130,29 @@ if (wantToDraw) {
 // while문 vs. for문
 
 // while문
-(() => {
+() => {
   let i = 0;
   while (i < 10) {
     console.log(`while문`);
     ++i;
   }
-})();
+};
 
 // for문
-(() => {
+() => {
   for (let i = 0; i < 10; ++i) {
     console.log(`for문`);
+  }
+};
+
+(() => {
+  const numbers = [11, 22, 33, 44, 55, 66, 77, 88, 99];
+
+  for (let i = 0, l = numbers.length; i < l; i++) {
+    console.log(numbers.at(i));
+  }
+
+  for (let i = 0, number; (number = numbers[i]); i++) {
+    console.log(number);
   }
 })();
