@@ -145,7 +145,7 @@ if (wantToDraw) {
   }
 };
 
-(() => {
+() => {
   const numbers = [11, 22, 33, 44, 55, 66, 77, 88, 99];
 
   for (let i = 0, l = numbers.length; i < l; i++) {
@@ -155,4 +155,32 @@ if (wantToDraw) {
   for (let i = 0, number; (number = numbers[i]); i++) {
     console.log(number);
   }
+};
+
+(() => {
+  const fruitBasket = ["체리망고", "토마토", "스트로베리"];
+  const students = [
+    { 이름: "홍민영" },
+    { 이름: "윤정화" },
+    { 이름: "허시온" },
+    { 이름: "조선현" },
+    { 이름: "성정현" },
+    { 이름: "조장원" },
+    { 이름: "김민지" },
+    { 이름: "고우현" },
+  ];
+  for (let i = 0, l = fruitBasket.length; i < l; i++) {
+    console.log(fruitBasket[i]);
+  }
+  console.time("정순환");
+  for (let i = 0, l = students.length; i < l; i++) {
+    console.log(students[i]["이름"]);
+  }
+  console.timeEnd("정순환");
+  // 역순 순환
+  console.time("역순환");
+  for (let i = students.length - 1; i >= 0; i--) {
+    console.log(students[i]["이름"]);
+  }
+  console.timeEnd("역순환");
 })();
