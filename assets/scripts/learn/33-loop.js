@@ -86,3 +86,40 @@ if (wantToDraw) {
 
   console.log("last i =", i);
 })();
+
+// ----------------------------
+// 반복문(do ...while)
+// while vs. do ...while
+(() => {
+  let condition = false;
+
+  //while문
+  //조건이 거짓이면 1번도 실행 안함
+  while (condition) {
+    console.log(`condition is true`);
+  }
+
+  //do ...while문
+  //조건이 거짓이어도 1번은 반드시 실행
+  do {
+    console.log(`condition is true`);
+  } while (condition);
+})();
+
+// ----------------------------
+// 사용자 입력 검증(do ...while)
+// "1부터 10까지 숫자를 입력하세요"
+// do...while 문 사용 예시
+
+{
+  let userInput;
+
+  do {
+    userInput = parseInt(prompt("1부터 10까지 숫자를 입력하세요"), 10);
+    if (Number.isNaN(userInput) || userInput < 1 || userInput > 10) {
+      console.error("입력 값이 1부터 10까지 숫자여야 합니다.");
+    }
+  } while (Number.isNaN(userInput) || userInput < 1 || userInput > 10);
+
+  console.log("사용자가 입력한 값은 " + userInput + "입니다.");
+}
