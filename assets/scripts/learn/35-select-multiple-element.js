@@ -48,7 +48,7 @@
 // Node.js 런타임 (JavaScript 실행 환경)
 // - Global
 
-(() => {
+() => {
   const lifeTips = document.querySelector(".life-tips");
 
   const paragraphs = lifeTips.querySelectorAll("p");
@@ -99,4 +99,12 @@
       p.classList.remove(PRIMARY_KEY);
     }
   });
+};
+(() => {
+  const paras = document.querySelectorAll(".life-tips p");
+  console.log(paras);
+
+  console.log(paras[0] === paras.item(0));
+  console.log(paras[1] === paras.item(1));
+  console.log(paras[2] === paras.item(2));
 })();
