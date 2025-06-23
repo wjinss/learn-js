@@ -84,3 +84,42 @@
     }
   }
 }
+
+.accordion-container {
+  min-inline-size: 342px;
+  padding-block: 50px;
+  background-color: #fff;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+
+  .accordion-item {
+    background-color: #eef4ff;
+    border-radius: 16px;
+    padding: 24px;
+
+    .accordion-btn {
+      margin: 0;
+      padding: 0;
+      border: none;
+      display: flex;
+      flex-flow: row nowrap;
+
+      span {
+        font-size: 16px;
+        font-weight: 700;
+        word-break: keep-all;
+        line-height: 1.6;
+        color: #191f28;
+        text-align: start;
+      }
+    }
+    .accordion-content10 {
+      /* display: none; */
+      text-decoration: none;
+      color: #999;
+      font-size: 14px;
+      line-height: 0.5;
+    }
+  }
+}
