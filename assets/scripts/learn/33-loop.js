@@ -293,3 +293,16 @@ if (wantToDraw) {
     console.log(i);
   }
 })();
+
+const students = [
+  { name: "kim", age: 20 },
+  { name: "lee", age: 20 },
+  { name: "park", age: 20 },
+  { name: "jeong", age: 20 },
+  { name: "choi", age: 20 },
+];
+
+for (let key in students) {
+  const value = students[key];
+  console.log(`${key} : ${value}`);
+}
