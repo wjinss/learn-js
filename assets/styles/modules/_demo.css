@@ -32,8 +32,12 @@ body {
 h1 {
   --font-size: 48px;
 
-  font-weight: 200;
+  font-weight: 900;
   font-size: var(--font-size);
+
+  &::before {
+    content: "🌈";
+  }
 }
 #app {
   text-align: center;
