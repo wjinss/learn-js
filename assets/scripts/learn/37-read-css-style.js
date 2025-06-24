@@ -48,7 +48,7 @@
 // };
 
 // css 가상요소 객체의 스타일 값 읽기
-(() => {
+() => {
   const heading1 = document.querySelector("h1");
   const heading1PseudoElementStyles = getComputedStyle(heading1, "::after");
   console.log(heading1PseudoElementStyles.getPropertyValue("content"));
@@ -59,4 +59,4 @@
   console.log(heading1PseudoElementStyles.getPropertyValue("z-index"));
   console.log(heading1PseudoElementStyles.getPropertyValue("width"));
   console.log(heading1PseudoElementStyles.getPropertyValue("height"));
-})();
+};
