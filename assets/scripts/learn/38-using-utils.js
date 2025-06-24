@@ -4,11 +4,11 @@
 
   // 유틸리티 함수를 사용해서 요소 스타일 읽기
   const contentValue = getStyle(tester, "content", "::before");
-  // console.log(contentValue)
+  console.log(contentValue);
 
   // 유틸리티 함수를 사용해서 요소 스타일 쓰기
   const resultElement = setStyle(tester, "color", "#910038");
-  // console.log(tester === resultElement) // true
+  console.log(tester === resultElement); // true
 
   // 유틸리티 함수 하나를 사용해 요소 스타일 쓰기/읽기 (편의성 향상)
   // 1. 요소에 스타일 쓰기

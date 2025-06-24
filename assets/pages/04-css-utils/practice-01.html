@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>컬러 인풋으로 색상 변경</title>
+    <style>
+      .text {
+        font-size: 16px;
+        color: #2d3436;
+      }
+
+      .slider-container {
+        margin-top: 1rem;
+      }
+
+      label {
+        font-size: 14px;
+        margin-right: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="text">이 텍스트의 글자 크기를 조절해 보세요!</p>
+
+    <div class="slider-container">
+      <label for="fontSizeSlider">글자 크기:</label>
+      <input type="range" id="fontSizeSlider" min="12" max="48" value="16" />
+      <output id="fontSizeValue">16px</output>
+    </div>
+  </body>
+</html>

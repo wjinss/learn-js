@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>글자, 배경 색상 조절</title>
+    <style>
+      .text {
+        padding: 1rem;
+        font-size: 1.5rem;
+        text-align: center;
+        color: #000000;
+        background-color: #ffffff;
+      }
+
+      .controls {
+        margin-top: 2rem;
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+      }
+
+      label {
+        font-size: 14px;
+      }
+
+      input[type="color"] {
+        width: 60px;
+        height: 30px;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="text">이 텍스트의 글자 크기를 조절해 보세요!</p>
+
+    <div class="controls">
+      <label for="textColor">
+        글자색
+        <input type="color" id="textColor" value="#000000" />
+      </label>
+
+      <label for="backgroundColor">
+        배경색
+        <input type="color" id="backgroundColor" value="#ffffff" />
+      </label>
+    </div>
+  </body>
+</html>
