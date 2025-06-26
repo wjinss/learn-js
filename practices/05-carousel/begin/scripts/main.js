@@ -269,7 +269,7 @@
     });
   };
   // 4-4. 이전 탐색 버튼 | 이전 탐색(버튼) 기능(함수 구현)
-  (() => {
+  () => {
     const carousal = document.querySelector(".carousel");
     const contentWrapper = carousal.querySelector(".carousel__contents");
     const prevButton = carousal.querySelector('[aria-label^="이전"]');
@@ -305,6 +305,98 @@
 
       selectedContent.classList.remove(SELECTED_CLASSNAME);
       prevContent.classList.add(SELECTED_CLASSNAME);
+    });
+  };
+  // 5. 이전/다음 탐색 버튼 표시 | 이전 탐색(버튼) 기능(함수 구현)
+  () => {
+    const carousal = document.querySelector(".carousel");
+    const contentWrapper = carousal.querySelector(".carousel__contents");
+    const prevButton = carousal.querySelector('[aria-label^="이전"]');
+    const nextButton = carousal.querySelector('[aria-label^="다음"]');
+
+    const SELECTED_CLASSNAME = "is-selected";
+
+    nextButton.addEventListener("click", () => {
+      const selectedContent = contentWrapper.querySelector(
+        `.${SELECTED_CLASSNAME}`
+      );
+      const nextContent = selectedContent.nextElementSibling;
+
+      if (!nextContent.nextElementSibling) nextButton.hidden = true;
+
+      const distance = getComputedStyle(nextContent).getPropertyValue("left");
+      contentWrapper.style.setProperty("transform", `translateX(-${distance})`);
+
+      selectedContent.classList.remove(SELECTED_CLASSNAME);
+      nextContent.classList.add(SELECTED_CLASSNAME);
+      // 다음 탐색 버튼을 사용자가 눌렀을때
+      // 만약 이전 탐색 버튼의 hidden 속성 값이 true라면
+      // 이전 탐색 버튼의 hidden 속성 값을 false로 바꿔라
+      if (prevButton.hidden) prevButton.hidden = false;
+    });
+    prevButton.addEventListener("click", () => {
+      const selectedContent = contentWrapper.querySelector(
+        `.${SELECTED_CLASSNAME}`
+      );
+      const prevContent = selectedContent.previousElementSibling;
+
+      if (!prevContent.previousElementSibling) prevButton.hidden = true;
+
+      const distance = getComputedStyle(prevContent).getPropertyValue("left");
+      contentWrapper.style.setProperty("transform", `translateX(-${distance})`);
+
+      selectedContent.classList.remove(SELECTED_CLASSNAME);
+      prevContent.classList.add(SELECTED_CLASSNAME);
+      // 이전 탐색 버튼을 사용자가 눌렀을때
+      // 만약 다음 탐색 버튼의 hidden 속성 값이 true라면
+      // 다음 탐색 버튼의 hidden 속성 값을 false로 바꿔라
+      if (nextButton.hidden) nextButton.hidden = false;
+    });
+  };
+  // 5. 이전/다음 탐색 버튼 표시 | 이전 탐색(버튼) 기능(함수 구현)
+  (() => {
+    const carousal = document.querySelector(".carousel");
+    const contentWrapper = carousal.querySelector(".carousel__contents");
+    const prevButton = carousal.querySelector('[aria-label^="이전"]');
+    const nextButton = carousal.querySelector('[aria-label^="다음"]');
+
+    const SELECTED_CLASSNAME = "is-selected";
+
+    nextButton.addEventListener("click", () => {
+      const selectedContent = contentWrapper.querySelector(
+        `.${SELECTED_CLASSNAME}`
+      );
+      const nextContent = selectedContent.nextElementSibling;
+
+      if (!nextContent.nextElementSibling) nextButton.hidden = true;
+
+      const distance = getComputedStyle(nextContent).getPropertyValue("left");
+      contentWrapper.style.setProperty("transform", `translateX(-${distance})`);
+
+      selectedContent.classList.remove(SELECTED_CLASSNAME);
+      nextContent.classList.add(SELECTED_CLASSNAME);
+      // 다음 탐색 버튼을 사용자가 눌렀을때
+      // 만약 이전 탐색 버튼의 hidden 속성 값이 true라면
+      // 이전 탐색 버튼의 hidden 속성 값을 false로 바꿔라
+      if (prevButton.hidden) prevButton.hidden = false;
+    });
+    prevButton.addEventListener("click", () => {
+      const selectedContent = contentWrapper.querySelector(
+        `.${SELECTED_CLASSNAME}`
+      );
+      const prevContent = selectedContent.previousElementSibling;
+
+      if (!prevContent.previousElementSibling) prevButton.hidden = true;
+
+      const distance = getComputedStyle(prevContent).getPropertyValue("left");
+      contentWrapper.style.setProperty("transform", `translateX(-${distance})`);
+
+      selectedContent.classList.remove(SELECTED_CLASSNAME);
+      prevContent.classList.add(SELECTED_CLASSNAME);
+      // 이전 탐색 버튼을 사용자가 눌렀을때
+      // 만약 다음 탐색 버튼의 hidden 속성 값이 true라면
+      // 다음 탐색 버튼의 hidden 속성 값을 false로 바꿔라
+      if (nextButton.hidden) nextButton.hidden = false;
     });
   })();
 }
