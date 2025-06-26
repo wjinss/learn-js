@@ -1,0 +1,19 @@
+<article class="modal">
+  <head class="modal__head">
+    <!-- ... -->
+  </head>
+  <div class="modal__content">
+    <!-- ... -->
+  </div>
+  <footer class="modal__foot">
+    <button type="button" class="modal__close">닫기</button>
+  </footer>
+  <script>
+    const closeButton = document.querySelector(".modal__close");
+    //1. `closeButton`의 부모 요소를 탐색해 콘솔 패널에 출력합니다.
+    console.log(closeButton.parentElement);
+
+    // 2. `closeButton`의 상위 요소 중, `.modal` 요소를 탐색해 콘솔 패널에 출력합니다.
+    console.log(closeButton.closest(".modal"));
+  </script>
+</article>

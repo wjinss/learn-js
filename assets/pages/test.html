@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="parent">
+      <span>First span</span>
+      <span>Second span</span>
+      <span>Last span</span>
+    </p>
+    <script>
+      const paraent = document.getElementById("parent");
+      console.log(paraent.firstChild);
+      console.log(paraent.lastChild);
+      console.log(paraent.firstChild.nodeName);
+      console.log(paraent.lastChild.nodeName);
+    </script>
+  </body>
+</html>

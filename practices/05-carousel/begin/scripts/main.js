@@ -1,0 +1,109 @@
+{
+  // - 로딩되면 이전 버튼은 처음에 감춰져야 합니다.
+  // - 다음 탐색 버튼을 누르면 콘텐츠가 전환되어 다음 콘텐츠가 표시됩니다.
+  // - 표시된 콘텐츠가 처음이 아닌 경우, 이전 버튼이 표시되어야 합니다.
+  // - 마지막 콘텐츠가 표시되면 다음 버튼은 감춰져야 합니다.
+  // - 이전 탐색 버튼을 누르면 콘텐츠가 전환되어 이전 콘텐츠가 표시됩니다.
+  // - 표시된 콘텐츠가 마지막이 아닌 경우, 다음 버튼이 표시되어야 합니다.
+  // - 처음 콘텐츠가 표시되면 이전 버튼은 감춰져야 합니다.
+  // - 인디케이터를 클릭하면 해당 순서의 콘텐츠가 표시되어야 합니다.
+  // - 표시된 콘텐츠에 따라 이전/다음 버튼이 감춰지거나 표시되어야 합니다.
+  // - 이전 활성 인디케이터와 클릭한 인디케이터는 활성 상태가 서로 전환되어야 합니다.
+  // const carousel = document.querySelector(".carousel");
+  // const btns = carousel.querySelectorAll(".carousel__button");
+  // const prevBtn = btns[0];
+  // const nextBtn = btns[1];
+  // const carouselIndicators = carousel.querySelectorAll(".carousel__indicators");
+  // const carouselContents = carousel.querySelector(".carousel__contents");
+  // const CAROUSEL_LENGTH =
+  //   carousel.querySelectorAll(".carousel__content").length - 1;
+  // let current = 0;
+  // nextBtn.addEventListener("click", () => {
+  //   let width = "800px";
+  //   if (current !== CAROUSEL_LENGTH) {
+  //     carouselContents.setProperty(
+  //       "transform",
+  //       `translateX(${current} * -${width})`
+  //     );
+  //     current++;
+  //   } else {
+  //     carouselContents.setProperty("transform", `translateX(0)`);
+  //   }
+  // });
+  // prevBtn.addEventListener("click", () => {});
+}
+{
+  // 1. 문서에서 제어할 대상 요소 선택(찾기)
+  () => {
+    // 케러셀 컴포넌트 찾기
+    const carousal = document.querySelector(".carousel");
+
+    // 케러셀 콘텐츠 래퍼
+    const contentWrapper = carousal.querySelector(".carousel__contents");
+
+    // 이전 버튼 찾기
+    const prevButton = carousal.querySelector('[aria-label^="이전"]');
+
+    // 이전 버튼 찾기
+    const nextButton = carousal.querySelector('[aria-label^="다음"]');
+  };
+
+  // 2. 상태 클래스 이름 상수로 지정
+  () => {
+    const carousal = document.querySelector(".carousel");
+    const contentWrapper = carousal.querySelector(".carousel__contents");
+    const prevButton = carousal.querySelector('[aria-label^="이전"]');
+    const nextButton = carousal.querySelector('[aria-label^="다음"]');
+
+    // 활성 상태를 나타내는 클래스 이름 지정 (유지 보수 고려)
+    const SELECTED_CLASSNAME = "is-selected";
+  };
+
+  // 3-1. 현재/다음 코스 탐색 | 다음 탐색(버튼) 기능(함수 구현)
+  () => {
+    const carousal = document.querySelector(".carousel");
+    const contentWrapper = carousal.querySelector(".carousel__contents");
+    const prevButton = carousal.querySelector('[aria-label^="이전"]');
+    const nextButton = carousal.querySelector('[aria-label^="다음"]');
+
+    const SELECTED_CLASSNAME = "is-selected";
+
+    // 다음 탐색 버튼 클리 이벤트 리스너 추가
+    // 구현할 기능은 다음 콘텐츠 탐색
+    // -현재/다음 콘텐츠 탐색
+    nextButton.addEventListener("click", () => {
+      //현재 선택된 콘텐츠 찾기
+      const selectedContent = contentWrapper.querySelector(
+        `.${SELECTED_CLASSNAME}`
+      );
+
+      //다음에 선택될 콘텐츠 탐색
+      const nextContent = selectedContent.nextElementSibling;
+    });
+  };
+
+  // 3-2. 다음 콘텐츠로 이동 | 다음 탐색(버튼) 기능(함수 구현)
+  (() => {
+    const carousal = document.querySelector(".carousel");
+    const contentWrapper = carousal.querySelector(".carousel__contents");
+    const prevButton = carousal.querySelector('[aria-label^="이전"]');
+    const nextButton = carousal.querySelector('[aria-label^="다음"]');
+
+    const SELECTED_CLASSNAME = "is-selected";
+
+    nextButton.addEventListener("click", () => {
+      const selectedContent = contentWrapper.querySelector(
+        `.${SELECTED_CLASSNAME}`
+      );
+      const nextContent = selectedContent.nextElementSibling;
+
+      // 다음 콘텐츠로 이동
+      // 다음 콘텐츠의 브루아저에 의해 계산된 너비 값을 읽기
+      const distance = getComputedStyle(nextContent).getPropertyValue("left");
+
+      // 콘텐츠들을 감싼 래퍼에 transform 인라인 스타일 설정(-800px, -1600px)
+      // contentWrapper.style.setProperty("transform", `translateX(-800px`);
+      contentWrapper.style.setProperty("transform", `translateX(-${distance})`);
+    });
+  })();
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="card">
+      <h2 class="card__title">상품 정보</h2>
+      <div class="card__desc">
+        <p>이 제품은 <b>매우 유용</b>합니다.</p>
+        <p>이 제품은 <b>리미티드 에디션</b>합니다.</p>
+      </div>
+    </section>
+    <script>
+      const card = document.querySelector(".card");
+
+      // 1. `.card` 요소의 모든 자식 요소를 찾아 콘솔에 출력합니다.
+      console.log(card.children);
+
+      // 2. `.card` 요소의 첫번째 자식 요소를 찾아 콘솔에 출력합니다.
+      console.log(card.firstElementChild);
+
+      // 3. `.card` 요소의 마지막 자식 요소를 찾아 콘솔에 출력합니다.
+      console.log(card.lastElementChild);
+
+      // 4. `.card__desc` 요소 내부의 모든 `<p>` 요소를 찾아 콘솔에 출력합니다.
+      const cardDesc = document.querySelector(".card__desc");
+      console.log("모든 p", cardDesc.querySelectorAll("p"));
+    </script>
+  </body>
+</html>

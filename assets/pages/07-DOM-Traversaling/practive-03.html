@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul class="menu">
+      <li>홈</li>
+      <li>서비스</li>
+      <li>포트폴리오</li>
+      <li class="active">블로그</li>
+      <li>연락처</li>
+    </ul>
+    <script>
+      const activeItem = document.querySelector(".active");
+
+      // 1. `activeItem`의 이전 형제 요소를 선택해 콘솔 패널에 출력합니다.
+      console.log(activeItem.previousElementSibling);
+
+      // 2. `activeItem`의 다음 형제 요소를 선택해 콘솔 패널에 출력합니다.
+      console.log(activeItem.nextElementSibling);
+
+      // 3. `"서비스"` 콘텐츠를 포함하는 형제 요소를 선택해 콘솔 패널에 출력합니다.
+      console.log(activeItem.previousElementSibling.previousElementSibling);
+      console.log(activeItem.parentElement.children.item(1));
+      console.log(activeItem.closest("ul.menu").querySelector(":nth-child(2)"));
+      const parent = activeItem.closest(".menu");
+      console.log(parent.children.item(1));
+    </script>
+  </body>
+</html>
