@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "live-server --port=3001 --host=localhost"
+    "dev": "live-server --port=3000 --host=localhost"
   },
   "dependencies": {
     "live-server": "^1.2.2"
