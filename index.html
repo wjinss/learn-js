@@ -20,96 +20,17 @@
   <body>
     <!-- <h1 style="color: tan">JavaScript 학습</h1> -->
     <h1 id="static">JavaScript 학습</h1>
-    <div hidden>
-      <a href="https://naver.com" target="_blank" rel="noopenner noreferrer">
-        네이버
-      </a>
-      <label for="agreement">
-        <input type="checkbox" name="agreement" id="agreement" />
-        동의합니다.
-      </label>
-      <form hidden data-learn="form" method="GET" action="https://google.com">
-        <!-- 검색 필드 -->
-        <div>
-          <label for="search-term">검색어</label>
-          <input
-            type="search"
-            name="search-term"
-            id="search-term"
-            placeholder="검색어를 입력"
-          />
-        </div>
-        <div>
-          <label for="email">이메일</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="user@company.io"
-          />
-        </div>
-        <div style="margin-block-start: 8px">
-          <button type="submit">검색</button>Add commentMore actions
-          <button type="reset">초기화</button>
-        </div>
-      </form>
-      <form hidden method="POST" action="http://localhost:5000/submit">
-        <div>
-          <label for="name">이름:</label>
-          <input type="text" id="name" name="name" required />
-        </div>
-        <div>
-          <label for="email">이메일:</label>
-          <input type="email" id="email" name="email" required />
-        </div>
-        <button type="submit">전송</button>Add commentMore actions
-      </form>
-      <button type="button" data-name="change-bg-color" hidden>
-        배경색 변경
-      </button>
-    </div>
-    <ul class="faq-list" hidden>
-      <li data-index="0"><a href="/faq/shipping">배송 관련 문의</a></li>
-      <li data-index="1"><a href="/faq/payment">결제 방법 안내</a></li>
-      <li data-index="2"><a href="/faq/return">반품 및 환불 정책</a></li>
-      <li data-index="3"><a href="/faq/account">계정 및 개인정보</a></li>
-      <li data-index="4"><a href="/faq/coupon">쿠폰 및 프로모션</a></li>
-    </ul>
-    <article hidden>
-      <div id="star-wars">
-        <div class="character" data-type="good-guy">
-          <span>루크</span> <span>스카이워커</span>
-        </div>
-        <div class="character" data-type="good-guy">
-          <b>요</b>
-          <i>다</i>
-        </div>
-        <div class="character" data-type="villain">
-          <em>다스</em> <strong>베이더</strong>
-        </div>
-      </div>
-    </article>
-    <p
-      hidden
-      id="notice"
-      class="announcement"
-      data-category="event"
-      data-user-id="27"
-      data-role="manager"
-      data-status="active"
-    >
-      모든 태그는 여러 개의 속성을 가질 수 있습니다!
-    </p>
 
-    <form hidden>
-      <div>
-        <!-- HTML attribute -->
-        <input type="checkbox" name="hobby" id="hobby" checked />
-        <label for="hobby">취미</label>
+    <div class="box box1">
+      <span>박스 1</span>
+      <div class="box box2">
+        <span>박스 2</span>
+        <div class="box box3">
+          <span>박스 3</span>
+        </div>
       </div>
-      <button type="submit">제출</button>
-    </form>
-    <!-- <script src="./assets/scripts/learn/41-custom-attribute-dataset.js"></script> -->
-    <script src="./assets/scripts/learn/45-event-default-action.js"></script>
+    </div>
+
+    <script src="./assets/scripts/learn/46-event-propagation.js"></script>
   </body>
 </html>
