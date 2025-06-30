@@ -135,9 +135,22 @@
 
         main.addEventListener("transitionrun", (e) => {
           console.log('transition "run"', e.propertyName, e.target);
-          if (e.propertyName === "translate") {
-            e.target.style.setProperty("scale", "1 0.8");
-          }
+          e.target.style.setProperty("scale", "1 0.85");
+          e.target.style.setProperty("filter", "blur(2px)");
+        });
+
+        main.addEventListener("transitionstart", (e) => {
+          console.log('transition "start"', e.propertyName, e.target);
+        });
+
+        main.addEventListener("transitionend", (e) => {
+          console.log('transition "end"', e.propertyName, e.target);
+          e.target.style.setProperty("scale", "1");
+          e.target.style.setProperty("filter", "blur(0)");
+        });
+
+        main.addEventListener("transitioncancel", (e) => {
+          console.log('transition "cancel"', e.propertyName, e.target);
         });
       });
     </script>
