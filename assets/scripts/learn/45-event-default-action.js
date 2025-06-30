@@ -15,7 +15,6 @@
     if (!e.defaultPrevented) e.preventDefault();
   });
 };
-() => {};
 // 체크박스 요소의 브라우저 기본 작동 방지
 () => {
   const checkbox = document.getElementById("agreement");
@@ -41,7 +40,7 @@
   });
 };
 // 체크박스 요소의 브라우저 기본 작동 방지
-(() => {
+() => {
   const checkbox = document.getElementById("agreement");
   console.log(checkbox.checked);
 
@@ -67,10 +66,10 @@
       console.log("변경된 상태 반전(화면에 표시된 상태 값) =", input.checked);
     }, 300);
   });
-})();
+};
 // 체크박스 요소의 브라우저 기본 작동 방지
 // click 이벤트
-(() => {
+() => {
   const checkbox = document.getElementById("agreement");
   checkbox.addEventListener("click", (e) => {
     console.dir(e);
@@ -82,7 +81,7 @@
       console.log("2");
     }
   });
-})();
+};
 
 // 폼 요소의 브라우저 기본 작동 방지
 // - submit 이벤트
