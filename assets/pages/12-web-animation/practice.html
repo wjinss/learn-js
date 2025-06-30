@@ -98,6 +98,18 @@
         }
       }
 
+      /* .rainbow {
+      animation: rainbow 6s alternate infinite;
+    }
+
+    @keyframes rainbow {
+      0% { background: #ff004d; }
+      20% { background: #ff77ab; }
+      50% { background: #00e756; }
+      80% { background: #29adff; }
+      100% { background: #ff77ab; }
+    } */
+
       @keyframes animateX {
         0% {
           transform: translateX(0);
@@ -111,6 +123,43 @@
       document.addEventListener("DOMContentLoaded", () => {
         const button = document.querySelector("button");
         const main = document.querySelector("main");
+
+        // Web Animations API
+        const balls = main.querySelectorAll(".ball");
+
+        balls.forEach((ball) => {
+          /* Element.animate() */
+          ball.animateObject = ball.animate(
+            /* keyframes */
+            [
+              // single keyframe
+              { backgroundColor: "#ff004d", offset: 0 },
+              { backgroundColor: "#ff77ab", offset: 0.2 },
+              { backgroundColor: "#00e756", offset: 0.5 },
+              { backgroundColor: "#29adff", offset: 0.8 },
+              { backgroundColor: "#ff77ab", offset: 1 },
+            ],
+            // number (duration)
+            // 6000,
+            // options
+            {
+              duration: 6000 /* 6000ms = 6s */,
+              direction: "alternate",
+              iterations: Infinity,
+            }
+          );
+        });
+
+        // 첫번째 볼 컨트롤
+        // 재생(play), 일시정지(pause)
+        const firstBall = balls.item(0);
+        const firstBallAnimation = firstBall.animateObject;
+
+        firstBallAnimation.pause();
+
+        firstBall.addEventListener("click", () => {
+          firstBallAnimation.play();
+        });
 
         // CSS Transition Event Types
 
