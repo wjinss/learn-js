@@ -9,9 +9,16 @@
   const ballElement = document.querySelector(".ball");
   const TRANSITION_CLASSNAME = "is-transition";
 
-  // mouse click + className toggle
   ballElement.addEventListener("click", (e) => {
-    e.currentTarget.classList.toggle(TRANSITION_CLASSNAME);
+    const ball = e.currentTarget;
+
+    // style을 활용해 속성의 상태 변경
+    // 트랜지션 트리거
+    ball.style.setProperty("--fill", "#e54d26");
+    ball.style.setProperty("--size", "100px");
+
+    // mouse click + className toggle
+    // e.currentTarget.classList.toggle(TRANSITION_CLASSNAME);
   });
   // mouse enter/leave event
   // ballElement.addEventListener("mouseenter", (e) => {
