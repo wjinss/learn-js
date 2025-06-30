@@ -9,81 +9,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/styles/main.css" />
     <link rel="icon" href="./assets/images/ecmascript-logo.png" />
-    <!-- JavaScript  MIME 타입 (기본값 text/javascript 생략가능) -->
-    <!-- <script type="module" src="./assets/scripts/learn/28-callback.js"></script> -->
-    <script src="./assets/scripts/utils/css.js"></script>
-    <script src="./assets/scripts/utils/events.js"></script>
-    <script src="./assets/scripts/utils/query.js"></script>
-    <script src="./assets/scripts/utils/attr.js"></script>
+    <script
+      type="module"
+      src="./assets/scripts/learn/49-web-animations.js"
+    ></script>
   </head>
-  <!-- <body style="background: lightcoral"> -->
+
   <body>
-    <!-- <h1 style="color: tan">JavaScript 학습</h1> -->
-    <h1 id="static">JavaScript 학습</h1>
+    <div class="ball"></div>
+    <main hidden>
+      <h1 id="static">JavaScript 학습</h1>
+      <div role="group" style="display: flex; gap: 4px; margin-block: 12px">
+        <button type="button" data-role="add-event">이벤트 추가</button>
+        <button type="button" data-role="remove-event">이벤트 제거</button>
+        <button data-role="tester" type="button">이벤트 추가 대기중...</button>
+        <button type="button" data-role="once-event">1회만 이벤트 설정</button>
+      </div>
 
-    <div role="group" style="display: flex; gap: 4px; margin-block: 12px">
-      <button type="button" data-role="add-event">이벤트 추가</button>
-      <button type="button" data-role="remove-event">이벤트 제거</button>
-      <button data-role="tester" type="button">이벤트 추가 대기중...</button>
-      <button type="button" data-role="once-event">1회만 이벤트 설정</button>
-    </div>
+      <ul class="link-list">
+        <li id="fruits">
+          <a href="/news">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M15 18h-5" />
+              <path d="M18 14h-8" />
+              <path
+                d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0v-9a2 2 0 0 1 2-2h2"
+              />
+              <rect width="8" height="4" x="10" y="6" rx="1" />
+            </svg>
+            <span>최신 뉴스 보기</span>
+          </a>
+        </li>
+        <li><a href="/tutorials">📘 튜토리얼 모음</a></li>
+        <li><a href="/community">💬 커뮤니티 참여</a></li>
+        <li><a href="/resources">📁 개발 자료실</a></li>
+        <li><a href="/contact">📮 문의하기</a></li>
+      </ul>
 
-    <ul class="link-list">
-      <li id="fruits">
-        <a href="/news">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M15 18h-5" />
-            <path d="M18 14h-8" />
-            <path
-              d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0v-9a2 2 0 0 1 2-2h2"
-            />
-            <rect width="8" height="4" x="10" y="6" rx="1" />
-          </svg>
-          <span>최신 뉴스 보기</span>
-        </a>
-      </li>
-      <li><a href="/tutorials">📘 튜토리얼 모음</a></li>
-      <li><a href="/community">💬 커뮤니티 참여</a></li>
-      <li><a href="/resources">📁 개발 자료실</a></li>
-      <li><a href="/contact">📮 문의하기</a></li>
-    </ul>
-
-    <div class="box box1">
-      <span>박스 1</span>
-      <div class="box box2">
-        <span>박스 2</span>
-        <div class="box box3">
-          <span>박스 3</span>
+      <div class="box box1">
+        <span>박스 1</span>
+        <div class="box box2">
+          <span>박스 2</span>
+          <div class="box box3">
+            <span>박스 3</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <form data-learn="form" method="GET" action="https://google.com">
-      <div>
-        <label for="search-term">검색어</label>
-        <input
-          type="search"
-          name="search-term"
-          id="search-term"
-          placeholder="검색어를 입력"
-        />
-      </div>
-      <div style="margin-block-start: 8px">
-        <button type="submit">검색</button>
-        <button type="reset">초기화</button>
-      </div>
-    </form>
-
-    <script src="./assets/scripts/learn/47-event-delegation.js"></script>
+      <form data-learn="form" method="GET" action="https://google.com">
+        <div>
+          <label for="search-term">검색어</label>
+          <input
+            type="search"
+            name="search-term"
+            id="search-term"
+            placeholder="검색어를 입력"
+          />
+        </div>
+        <div style="margin-block-start: 8px">
+          <button type="submit">검색</button>
+          <button type="reset">초기화</button>
+        </div>
+      </form>
+    </main>
   </body>
 </html>
