@@ -22,29 +22,40 @@
 
       section {
         margin-block-end: 60px;
-        &:nth-of-type(1) {
-          .ball {
-            transition-timing-function: linear;
+
+        .is-transition & {
+          &:nth-of-type(1) .ball {
+            transition-timing-function: cubic-bezier(0, 0, 1, 1);
           }
-        }
-        &:nth-of-type(2) {
-          .ball {
+          &:nth-of-type(2) .ball {
             transition-timing-function: ease;
           }
-        }
-        &:nth-of-type(3) {
-          .ball {
+          &:nth-of-type(3) .ball {
             transition-timing-function: ease-in;
           }
-        }
-        &:nth-of-type(4) {
-          .ball {
-            transition-timing-function: ease-in-out;
+          &:nth-of-type(4) .ball {
+            transition-timing-function: ease-out;
+          }
+          &:nth-of-type(5) .ball {
+            transition-timing-function: cubic-bezier(0.48, 0, 0.52, 1);
           }
         }
-        &:nth-of-type(5) {
-          .ball {
-            transition-timing-function: ease-out;
+
+        .is-animation & {
+          &:nth-of-type(1) .ball {
+            animation-timing-function: linear;
+          }
+          &:nth-of-type(2) .ball {
+            animation-timing-function: ease;
+          }
+          &:nth-of-type(3) .ball {
+            animation-timing-function: ease-in;
+          }
+          &:nth-of-type(4) .ball {
+            animation-timing-function: ease-out;
+          }
+          &:nth-of-type(5) .ball {
+            animation-timing-function: ease-in-out;
           }
         }
 
@@ -63,31 +74,78 @@
           block-size: var(--size);
           background-color: var(--color);
           border-radius: var(--radius);
+
+          /* transtion-(property|duration|timing-function|delay) */
           transition-property: translate;
           transition-duration: 1s;
 
-          &.is-sctive {
-            translate: calc((90vw - var(--size))) 0;
+          .is-transition & {
+            translate: calc(90vw - var(--size) - var(--padding)) 0;
           }
+
+          /* animation-(name|duration|timing-function|delay) */
+          animation-name: animateX;
+          animation-duration: 1s;
+          animation-timing-function: linear;
+          /* animation-(iteration-count|direction|fill-mode|play-state) */
+          animation-iteration-count: infinite;
+          animation-direction: alternate; /* ping pong */
+          animation-fill-mode: forwards;
+          animation-play-state: paused;
+
+          .is-animation & {
+            animation-play-state: running;
+          }
+        }
+      }
+
+      @keyframes animateX {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(80vw);
         }
       }
     </style>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const btn = document.querySelector("button");
-        const balls = document.querySelectorAll(".ball");
+        const button = document.querySelector("button");
+        const main = document.querySelector("main");
 
-        btn.addEventListener("click", () => {
-          balls.forEach((ball) => {
-            ball.classList.toggle("is-sctive");
-          });
+        main.addEventListener("click", (e) => {
+          const mainElement = e.currentTarget;
+
+          if (e.target.matches('[data-type="transition"]')) {
+            mainElement.classList.toggle("is-transition");
+          }
+
+          if (e.target.matches('[data-type="animation"]')) {
+            let animationClassName = "is-animation";
+            const button = e.target;
+            if (mainElement.classList.contains(animationClassName)) {
+              mainElement.classList.remove(animationClassName);
+              button.textContent = "Animation Play";
+            } else {
+              mainElement.classList.add(animationClassName);
+              button.textContent = "Animation Paused";
+            }
+          }
+        });
+
+        main.addEventListener("transitionrun", (e) => {
+          console.log('transition "run"', e.propertyName, e.target);
+          if (e.propertyName === "translate") {
+            e.target.style.setProperty("scale", "1 0.8");
+          }
         });
       });
     </script>
   </head>
   <body>
     <main lang="en">
-      <button type="button">toggle</button>
+      <button type="button" data-type="transition">Transition Toggle</button>
+      <button type="button" data-type="animation">Animation Play</button>
 
       <section>
         <h2>Linear</h2>
