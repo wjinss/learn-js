@@ -1,3 +1,4 @@
+/* global gsap, GSDevTools */
 // GSAP - Getting Started
 () => {
   // Web Animations API
@@ -17,8 +18,6 @@
       // animation.play()
     });
   }
-
-  /* global gsap */
 
   // GSAP API
   // gsap.to(target, varObject)
@@ -265,8 +264,8 @@
   setTimeout(animate, 500);
 };
 
-// GSAP - Controls
-(() => {
+// GSAP - Controls & Controls
+() => {
   function animate() {
     const tl = gsap
       .timeline({
@@ -364,4 +363,35 @@
     // animate()
     tweenAnimate();
   }, 500);
+};
+
+// GSAP - Animation Debugging (widh GSDevTools)
+(() => {
+  // GSAP PlugIn - GSDevTools
+  // 플러그인 등록
+  gsap.registerPlugin(GSDevTools);
+
+  // 타임라인 애니메이션 생성
+  const tl = gsap
+    .timeline({
+      id: "박스 로테이션 타임라인 애니메이션",
+      // repeat: 2,
+      // yoyo: true,
+      defaults: { x: -200, duration: 0.3, opacity: 0, rotation: 270 },
+    })
+    .from(".blue", {})
+    .from(".cyan", {})
+    .from(".green", {}, "+=1")
+    .from(".pink", {})
+    .from(".purple", {});
+
+  // GSDevTools 인스턴스 생성
+  GSDevTools.create({
+    animation: tl,
+    persist: false,
+    paused: false,
+    timeScale: 2,
+    loop: true,
+    // visibility: 'auto'
+  });
 })();
