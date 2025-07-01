@@ -226,7 +226,7 @@
 };
 
 // GSAP - Timeline
-(() => {
+() => {
   // function animate() {
   //   gsap.to(".box", {
   //     rotation: 360,
@@ -261,6 +261,73 @@
       .from(".cyan", { y: 400, delay: 0.4 })
       .from(".pink", { y: 400 }, "<")
       .from(".green", { y: 400 }, "+=0.1");
+  }
+  setTimeout(animate, 500);
+};
+
+// GSAP - Controls
+(() => {
+  function animate() {
+    const tl = gsap
+      .timeline({
+        repeat: -1,
+        repeatDelay: 1,
+        yoyo: true,
+        defaults: { opacity: 0, duration: 1, ease: "back.inOut(4)" },
+        // 타임랑니 콜백 설정
+        onStart: () => {
+          console.log("start");
+        },
+        onUpdate: () => {
+          console.log("updating...");
+        },
+        onRepeat: () => {
+          console.log("repeat");
+        },
+        onComplete: () => {
+          console.log("completed");
+        },
+        onReverseComplete: () => {
+          console.log("reverse completed");
+        },
+      })
+      .from(".blue", { y: 200 }) // 0s
+      .from(".purple", { y: 200 }, "<")
+      .from(".cyan", { y: -200 }, "-=0.3")
+      .from(".pink", { y: -200 }, "<")
+      .from(".green", { y: 200 }, 0 + 0.3);
+
+    // 타임라인 인스턴스 제어
+    // pause()
+    tl.pause();
+
+    // 이벤트 위임
+    // 타임라인 컨트롤 (재생, 일시정지, 재개, 역재생, 재시작, 2배속, 0.5배속)
+    document.querySelector("header").addEventListener("click", (e) => {
+      const button = e.target.closest("button");
+
+      if (button.matches('[data-control="play"]')) {
+        tl.play();
+      }
+      if (button.matches('[data-control="pause"]')) {
+        tl.pause();
+      }
+      if (button.matches('[data-control="resume"]')) {
+        tl.resume();
+      }
+      if (button.matches('[data-control="reverse"]')) {
+        tl.reverse();
+      }
+      if (button.matches('[data-control="restart"]')) {
+        tl.restart();
+      }
+      if (button.matches('[data-control="timeScale-2"]')) {
+        tl.timeScale(2).play();
+      }
+      if (button.matches('[data-control="timeScale-0.5"]')) {
+        tl.timeScale(0.5).play();
+      }
+    });
   }
   setTimeout(animate, 500);
 })();
