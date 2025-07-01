@@ -243,7 +243,12 @@
 
   function animate() {
     // GSAP의 timeline 인스턴스 생성
-    const tl = gsap.timeline({ repeat: 1, repeatDelay: 1, yoyo: true });
+    const tl = gsap.timeline({
+      repeat: 1,
+      repeatDelay: 1,
+      yoyo: true,
+      default: { opacity: 0, duration: 0.2, ease: "back.out" },
+    });
 
     // tl.add();
     // tl.from();
@@ -251,34 +256,11 @@
     // tl.to();
     // tl.set();
 
-    tl.from(".blue", { y: 400, opacity: 0, duration: 0.2, ease: "back.out" })
-      .from(
-        ".purple",
-        { y: 400, opacity: 0, duration: 0.2, ease: "back.out" },
-        "<"
-      )
-      .from(".cyan", {
-        y: 400,
-        opacity: 0,
-        duration: 0.2,
-        ease: "back.out",
-        delay: 0.4,
-      })
-      .from(
-        ".pink",
-        { y: 400, opacity: 0, duration: 0.2, ease: "back.out" },
-        "<"
-      )
-      .from(
-        ".green",
-        {
-          y: 400,
-          opacity: 0,
-          duration: 0.2,
-          ease: "back.out",
-        },
-        "+=0.1"
-      );
+    tl.from(".blue", { y: 400 })
+      .from(".purple", { y: 400 }, "<")
+      .from(".cyan", { y: 400, delay: 0.4 })
+      .from(".pink", { y: 400 }, "<")
+      .from(".green", { y: 400 }, "+=0.1");
   }
   setTimeout(animate, 500);
 })();
