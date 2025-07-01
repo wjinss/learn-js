@@ -1,3 +1,4 @@
+// GSAP - Getting Started
 () => {
   // Web Animations API
   function playground() {
@@ -150,7 +151,8 @@
     playgroundGSAP();
   }, 500);
 };
-(() => {
+// GSAP - Stagger
+() => {
   function animate() {
     // gsap.from('.blue', { y: 100, opacity: 0, duration: 1 })
     // gsap.from('.yellow', { y: 100, opacity: 0, duration: 1, delay: 1 })
@@ -220,5 +222,23 @@
     // }
   }
 
+  setTimeout(animate, 500);
+};
+
+// GSAP - Timeline
+(() => {
+  function animate() {
+    gsap.to(".box", {
+      rotation: 360,
+      duration: 1,
+      stagger: (index) => {
+        if (index === 0) {
+          return 2;
+        } else {
+          return 0.1;
+        }
+      },
+    });
+  }
   setTimeout(animate, 500);
 })();
