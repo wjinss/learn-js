@@ -227,18 +227,58 @@
 
 // GSAP - Timeline
 (() => {
+  // function animate() {
+  //   gsap.to(".box", {
+  //     rotation: 360,
+  //     duration: 1,
+  //     stagger: (index) => {
+  //       if (index === 0) {
+  //         return 2;
+  //       } else {
+  //         return 0.1;
+  //       }
+  //     },
+  //   });
+  // }
+
   function animate() {
-    gsap.to(".box", {
-      rotation: 360,
-      duration: 1,
-      stagger: (index) => {
-        if (index === 0) {
-          return 2;
-        } else {
-          return 0.1;
-        }
-      },
-    });
+    // GSAP의 timeline 인스턴스 생성
+    const tl = gsap.timeline({ repeat: 1, repeatDelay: 1, yoyo: true });
+
+    // tl.add();
+    // tl.from();
+    // tl.formTo();
+    // tl.to();
+    // tl.set();
+
+    tl.from(".blue", { y: 400, opacity: 0, duration: 0.2, ease: "back.out" })
+      .from(
+        ".purple",
+        { y: 400, opacity: 0, duration: 0.2, ease: "back.out" },
+        "<"
+      )
+      .from(".cyan", {
+        y: 400,
+        opacity: 0,
+        duration: 0.2,
+        ease: "back.out",
+        delay: 0.4,
+      })
+      .from(
+        ".pink",
+        { y: 400, opacity: 0, duration: 0.2, ease: "back.out" },
+        "<"
+      )
+      .from(
+        ".green",
+        {
+          y: 400,
+          opacity: 0,
+          duration: 0.2,
+          ease: "back.out",
+        },
+        "+=0.1"
+      );
   }
   setTimeout(animate, 500);
 })();
