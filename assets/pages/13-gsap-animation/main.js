@@ -106,6 +106,27 @@
     //   repeat: -1,
     //   repeatDelay: 1,
     // });
+    // canvas animation
+    const canvasElement = document.querySelector(".canvas");
+    const canvas = canvasElement.getContext("2d");
+
+    canvas.fillStyle = "#d0d0d0";
+    const position = {
+      x: 0,
+      y: 0,
+    };
+
+    function draw() {
+      canvas.clearRect(0, 0, 400, 400);
+      canvas.fillRect(position.x, position.y, 100, 100);
+    }
+    gsap.to(position, {
+      x: 300,
+      y: 300,
+      duration: 2,
+      ease: "back.inOut(7)",
+      onUpdate: draw,
+    });
   }
 
   setTimeout(() => {
