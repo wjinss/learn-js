@@ -5,7 +5,7 @@
 // 2. 애니메이션
 // 3. js 애니메이션
 // ---------------------------
-(() => {
+() => {
   const ballElement = document.querySelector(".ball");
   const TRANSITION_CLASSNAME = "is-transition";
 
@@ -28,4 +28,4 @@
   // ballElement.addEventListener("mouseleave", (e) => {
   //   e.currentTarget.classList.remove(TRANSITION_CLASSNAME);
   // });
-})();
+};

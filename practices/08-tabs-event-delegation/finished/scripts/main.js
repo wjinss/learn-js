@@ -23,7 +23,6 @@
       selectedIndex = index;
     });
   });
-  ㅁ;
 };
 
 (() => {
