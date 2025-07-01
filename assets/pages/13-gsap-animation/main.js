@@ -1,6 +1,5 @@
 () => {
   // Web Animations API
-
   function playground() {
     const boxElements = document.querySelectorAll(".box");
 
@@ -18,147 +17,198 @@
     });
   }
 
-  /*global gsap*/
+  /* global gsap */
+
   // GSAP API
   // gsap.to(target, varObject)
   // gsap.to(selector, varObject)
   // gsap.to(htmlElement, varObject)
+  // gsap.to([htmlElement1, ...], varObject)
   // gsap.to(svgElement, varObject)
   // gsap.to(jsObject, varObject)
   function playgroundGSAP() {
     // Tween Animation
+
     // to(target, vars)
     // gsap.to('.box', { x: '80vw' })
-    // gsap.to([".box", ".term"], { x: 400 });
+    // gsap.to(['.box', '.term'], { x: 400 })
+    // gsap.to('.box', {
+    //   xPercent: 100,
+    //   yPercent: 100,
+    //   duration: 3,
+    //   rotation: 360,
+    //   transformOrigin: 'center bottom',
+    // })
+
     // from(target, vars)
-    // gsap.from(".box", { y: -200 });
-    // fromTo(target, vars1, vars2)
-    // gsap.fromTo(".box", { x: 400, y: -400 }, { x: 10, y: 50 });
-    // set(target, vars) // 애니메이션 없이 속성값만큼 설정
-    // gsap.set(".box", { x: 400, y: -400 });
-    // gsap.from(".box", { y: -200, rotation: 720, scale: 0.3 });
-    // gsap.to(".box", {
-    //   xPercent: 250,
-    //   yPercent: 200,
-    //   rotation: 720,
-    //   scaleX: 0.6,
-    //   scaleY: 1.2,
-    //   skewX: 5,
-    //   skewY: 10,
-    //   transformOrigin: "left 50%",
-    //   duration: 2,
-    //   opacity: 0.2,
-    //   repeat: -1, //infinite
+    // gsap.from('.box', {
+    //   opacity: 0,
+    //   xPercent: 50,
+    //   y: -200,
+    //   rotation: 360,
+    //   scale: 4,
+    //   repeat: -1,
     //   delay: 1,
     //   repeatDelay: 1,
     //   yoyo: true,
-    // });
+    // })
+
+    // fromTo(target, vars1, vars2)
+    // gsap.fromTo('.box', { x: 400, y: -400 }, { x: 10, y: 50 })
+
+    // set(target, vars)
+    // gsap.set('.box', { x: 400, y: -200 })
+
+    // targets
+
+    // gsap.to('.box', { x: 200 })
+    // gsap.to(document.querySelector('.box'), { x: 200 })
+    // gsap.to(document.querySelectorAll('.box'), { x: 200 })
+    // gsap.to(Array.from(document.querySelectorAll('.box')), { x: 200 })
+
     // vars
-    // gsap.to(".box", {
-    //   x: "+=200",
-    //   y: "+=50",
-    //   duration: 2,
-    //   backgroundColor: "#27c83f",
-    //   borderRadius: "100px",
-    //   width: 100,
-    //   height: 100,
-    // });
     // SVG 요소
-    // gsap.to(".svgBox", {
+    // gsap.to('.svgBox', {
     //   attr: {
     //     rx: 40,
-    //     fill: "red",
-    //   },
-    // });
+    //     fill: 'red'
+    //   }
+    // })
+
     // JavaScript 객체
     const o = {
       num: 0,
       color: "yellow",
     };
+
     const output = document.querySelector("output");
+
     const renderCount = () => {
       output.value = Math.round(o.num);
       output.style.setProperty("color", o.color);
     };
+
     gsap.to(o, {
       num: 100,
       color: "cyan",
       duration: 3,
-      // repeat: 1,
+      // repeat: -1,
       // yoyo: true,
-      // ease: "power4.in",
-      // ease: "power4.out",
-      // ease: "power4.inOut",
-      // ease: "back.out(2)",
-      // ease: "bounce",
+      // ease: 'power4.in',
+      // ease: 'power4.out',
+      // ease: 'power4.inOut',
+      // ease: 'back.out',
+      // ease: 'bounce',
       ease: "steps(7)",
       onUpdate: renderCount,
       onComplete: () => {
         // console.log('finished gsap animation')
-        // gsap.set(output, { opacity: 0 })Add commentMore actions
+        // gsap.set(output, { opacity: 0 })
       },
     });
+
     // delay
     // repeatDelay
-    // gsap.to(".box:first-of-type", {
+    // gsap.to('.box:first-of-type', {
     //   rotation: 360,
     //   duration: 1,
-    //   repeat: -1,
+    //   repeat: 1,
     //   repeatDelay: 1,
-    // });
-    // gsap.to(".box.cyan", {
-    //   rotation: 360,
-    //   duration: 1,
-    //   delay: 1,
-    //   repeat: -1,
-    //   repeatDelay: 1,
-    // });
-    // canvas animation
-    // const canvasElement = document.querySelector(".canvas");
-    // const canvas = canvasElement.getContext("2d");
-    // canvas.fillStyle = "#d0d0d0";
-    // const position = {
-    //   x: 0,
-    //   y: 0,
-    // };
+    // })
+
+    // gsap.to('.box.yellow', { rotation: 360, duration: 1, delay: 1 })
+
+    // Canvas Animation
+    // const canvasElement = document.querySelector('.canvas')
+    // const canvas = canvasElement.getContext('2d')
+    // canvas.fillStyle = '#d0d0d0'
+
+    // const position = { x: 0, y: 0 }
+
     // function draw() {
-    //   canvas.clearRect(0, 0, 400, 400);
+    //   canvas.clearRect(0, 0, 400, 400)
     //   canvas.fillRect(position.x, position.y, 100, 100);
     // }
+
     // gsap.to(position, {
     //   x: 300,
     //   y: 300,
-    //   duration: 2,
-    //   ease: "back.inOut(7)",
-    //   onUpdate: draw,
-    // });
+    //   duration: 1,
+    //   ease: 'back.inOut(7)',
+    //   onUpdate: draw
+    // })
 
     // Easing
     // none
     // power(1,2,3,4).in
-    // power(1,2,3,4).ou
+    // power(1,2,3,4).out
     // power(1,2,3,4).inOut
-    // ...
   }
 
   setTimeout(() => {
+    playground();
     playgroundGSAP();
-    // playground();
   }, 500);
 };
-
 (() => {
   function animate() {
-    // gsap.from(".blue", { y: 100, opacity: 0, duration: 1 });
+    // gsap.from('.blue', { y: 100, opacity: 0, duration: 1 })
+    // gsap.from('.yellow', { y: 100, opacity: 0, duration: 1, delay: 1 })
+    // gsap.from('.green', { y: 100, opacity: 0, duration: 1, delay: 2 })
 
-    // gsap.from(".cyan", { y: 100, opacity: 0, duration: 1, delay: 0.5 });
+    gsap.from(".box", {
+      y: 100,
+      opacity: 0,
+      stagger: 0.1,
+      ease: "power1.out",
+    });
 
-    // gsap.from(".green", { y: 100, opacity: 0, duration: 1, delay: 1 });
+    // 이벤트 위임(Event Delegation)
+    document.querySelector("main").addEventListener("click", (e) => {
+      if (e.target.matches(".box")) {
+        gsap.to(".box", {
+          y: -100,
+          opacity: 0,
+          scale: 1.2,
+          // repeat: -1, // 1번, 5번, -1 무한
 
-    // gsap.from(".purple", { y: 100, opacity: 0, duration: 1, delay: 1.5 });
+          // stagger: 0.1,
 
-    gsap.from(".box", { y: 100, stagger: 0.5, ease: "back.out(2)" });
+          stagger: {
+            each: 0.3,
+            repeat: 5,
+            yoyo: true,
+          },
+
+          // stagger: (index, target, /* list */) => {
+          //   // return index * 0.2 // 0, 0.2, 0.4
+          //   // return index * 0.4 // 0, 0.4, 0.8
+
+          //   if (target.matches('.green')) {
+          //     return 1.5
+          //   } else {
+          //     return index * 0.2
+          //   }
+          // },
+          ease: "power4.out",
+        });
+      }
+    });
+
+    // 루프문 사용
+    // const boxes = document.querySelectorAll('.box')
+    // for (const box of boxes) {
+    //   box.addEventListener('click', () => {
+    //     gsap.to('.box', {
+    //       y: -100,
+    //       opacity: 0,
+    //       scale: 1.2,
+    //       stagger: 0.1,
+    //       ease: 'power4.out',
+    //     })
+    //   })
+    // }
   }
 
-  setTimeout(animate, 800);
+  setTimeout(animate, 500);
 })();
