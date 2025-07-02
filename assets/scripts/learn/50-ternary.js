@@ -92,7 +92,7 @@ const user = {
       warningMessage = "19세 미만이므로 출입이 불허합니다. ⚠️";
     }
 
-    // console.log(warningMessage)
+    console.log(warningMessage);
 
     let 조건1 = !true,
       조건2 = false,
@@ -181,6 +181,7 @@ const user = {
   }
 };
 
+// 실습1
 (() => {
   function getEntranceFeeByAge(age) {
     return age < 13
@@ -200,4 +201,34 @@ const user = {
   ];
 
   console.log(entranceFees); // [5000, 2000, 3000]
+})();
+
+// 실습2
+(() => {
+  function getGradeByScore(score) {
+    let grade;
+
+    if (score >= 90) {
+      grade = "A";
+    } else if (score >= 80) {
+      grade = "B";
+    } else if (score >= 70) {
+      grade = "C";
+    } else if (score >= 60) {
+      grade = "D";
+    } else {
+      grade = "F";
+    }
+
+    return grade;
+  }
+
+  const grades = [
+    getGradeByScore(75),
+    getGradeByScore(82),
+    getGradeByScore(96),
+    getGradeByScore(50),
+  ];
+
+  console.log(grades); // ['C', 'B', 'A', 'F']
 })();
