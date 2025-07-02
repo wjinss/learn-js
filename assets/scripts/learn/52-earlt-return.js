@@ -25,7 +25,7 @@
 };
 
 // 빠른 반환을 사용하지 않는 경우
-(() => {
+() => {
   const hasOwnClassName = (ele) => {
     // 빠른 시점에 return한다
     // 중첩된 코드를 줄이고, else 구문을 제거한다.
@@ -44,9 +44,9 @@
 
   const result = hasOwnClassName(document.body);
   console.log(result);
-})();
+};
 
-(() => {
+() => {
   // 빠른 반환을 사용하지 않은 경우
   function getGift1(score) {
     let gift = null;
@@ -91,4 +91,71 @@
 
   //   el.classList.toggle('.toggle')
   // })
+};
+
+// 실습 1
+() => {
+  // 클릭 시, 유효한 입력만 처리
+  // 사용자가 입력한 값이 없으면 "빠른 반환"을 사용해 경고 메시지를 띄우고,
+  // 입력이 있을 때만 결과를 출력합니다.
+
+  const practice1 = document.querySelector(".practice1");
+  const userNameInput = document.getElementById("username");
+  const output = practice1.querySelector("output");
+
+  practice1.addEventListener("click", (e) => {
+    const submitButton = e.target.closest('[type="submit"]');
+
+    if (!submitButton) return; // 함수 종료
+
+    e.preventDefault();
+
+    const userNameInputVaue = userNameInput.value.trim();
+
+    if (!userNameInputVaue) {
+      alert("이름을 입력해야 합니다.");
+      userNameInput.select();
+    } else {
+      output.value = userNameInputVaue;
+      userNameInput.value = "";
+    }
+  });
+};
+
+// 실습2
+(() => {
+  const practice2 = document.querySelector(".practice2");
+  const input = practice2.querySelector("input");
+  const button = practice2.querySelector("button");
+  const output = practice2.querySelector("output");
+
+  button.addEventListener("click", () => {
+    const score = Number(input.value);
+    const grade = getGrade(score);
+
+    output.textContent = grade;
+  });
+
+  // 실습 코드 작성
+  // ...
+
+  function getGrade(score) {
+    // 함수 코드 작성
+    if (score >= 90) return "A";
+    if (score >= 75) return "B";
+    if (score >= 60) return "C";
+    return "F";
+
+    // let grade;
+    // if (score >= 90) {
+    //   grade = "A";
+    // } else if (score >= 75) {
+    //   grade = "B";
+    // } else if (score >= 60) {
+    //   grade = "C";
+    // } else {
+    //   grade = "F";
+    // }
+    // return grade;
+  }
 })();
