@@ -77,3 +77,19 @@
     GSDevTools.getById("main").kill();
   });
 })();
+
+// CSS 리니어 그레디언트에 트랜지션을 설정하는 방법
+// custom properties + linear-gradient() + transition
+(() => {
+  [
+    { name: "--banner-link-begin", value: "#ff905c" },
+    { name: "--banner-link-end", value: "#ed027c" },
+  ].forEach((propertyDefinition) => {
+    CSS.registerProperty({
+      name: propertyDefinition.name,
+      inherits: false,
+      syntax: "<color>",
+      initialValue: propertyDefinition.value,
+    });
+  });
+})();
