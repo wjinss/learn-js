@@ -11,35 +11,43 @@
     <link rel="icon" href="./assets/images/ecmascript-logo.png" />
     <script
       type="module"
-      src="./assets/scripts/learn/52-earlt-return.js"
+      src="./assets/scripts/learn/53-template-literal.js"
     ></script>
   </head>
 
   <body>
     <h1 id="static">JavaScript 학습</h1>
-    <div class="practice1" hidden>
-      <form>
-        <div>
-          <label for="username">이름</label>
-          <input
-            id="username"
-            name="username"
-            placeholder="이름을 입력하세요"
-          />
-        </div>
-        <button type="submit">확인</button>
-      </form>
-      <output>결과 출력</output>
-    </div>
-    <div
-      class="practice2"
-      style="display: flex; flex-direction: column; gap: 20px"
-    >
-      <input type="number" aria-label="점수" placeholder="점수를 입력하세요" />
-      <button type="button">등급 확인</button>
-      <output>등급 출력</output>
-    </div>
+
     <main hidden>
+      <!-- 얼리 리턴 -->
+      <div class="practice1">
+        <form>
+          <div>
+            <label for="username">이름</label>
+            <input
+              id="username"
+              name="username"
+              placeholder="이름을 입력하세요"
+            />
+          </div>
+          <button type="submit">확인</button>
+        </form>
+        <output>결과 출력</output>
+      </div>
+      <div
+        class="practice2"
+        style="display: flex; flex-direction: column; gap: 20px"
+      >
+        <input
+          type="number"
+          aria-label="점수"
+          placeholder="점수를 입력하세요"
+        />
+        <button type="button">등급 확인</button>
+        <output>등급 출력</output>
+      </div>
+
+      <!-- GSAP -->
       <div class="ball"></div>
       <div role="group" style="display: flex; gap: 4px; margin-block: 12px">
         <button type="button" data-role="add-event">이벤트 추가</button>
