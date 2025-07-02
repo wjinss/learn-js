@@ -135,7 +135,7 @@ const user = {
     // console.log(warningMessage)
   }
 };
-(() => {
+() => {
   // 조건문
   {
     const 아이 = {
@@ -179,4 +179,25 @@ const user = {
 
     console.log(아이.장난감);
   }
+};
+
+(() => {
+  function getEntranceFeeByAge(age) {
+    return age < 13
+      ? // 나이가 13세 미만이면 입장료 2000원
+        2000
+      : // 13세 이상 65로 미만이면 입장료 500원
+      age >= 13 && age < 65
+      ? 5000
+      : // 65세 이상이면 입장료 3000원
+        3000;
+  }
+
+  const entranceFees = [
+    getEntranceFeeByAge(21),
+    getEntranceFeeByAge(10),
+    getEntranceFeeByAge(73),
+  ];
+
+  console.log(entranceFees); // [5000, 2000, 3000]
 })();
