@@ -11,34 +11,47 @@
     <link rel="icon" href="./assets/images/ecmascript-logo.png" />
     <script
       type="module"
-      src="./assets/scripts/learn/54-destructuring-assignment.js"
+      src="./assets/scripts/learn/55-default-parameters.js"
     ></script>
   </head>
 
   <body>
     <h1 id="static">JavaScript 학습</h1>
 
-    <div class="practice">
-      <form>
-        <div>
-          <label for="username">이름</label>
-          <input id="username" type="text" placeholder="이름을 입력하세요." />
-        </div>
-        <div>
-          <label for="meal">식사</label>
-          <select id="meal">
-            <option>식사 종류</option>
-            <option value="breakfast">아침</option>
-            <option value="lunch">점심</option>
-            <option value="dinner">저녁</option>
-          </select>
-        </div>
-        <button type="button">인사하기</button>
-      </form>
-      <p>인사말 출력</p>
+    <header>
+      <button type="button">test</button>
+    </header>
+    <div
+      id="controller"
+      role="group"
+      style="display: flex; gap: 4px; margin-block: 12px"
+    >
+      <button type="button" data-role="add-event">이벤트 추가</button>
+      <button type="button" data-role="remove-event">이벤트 제거</button>
+      <button data-role="tester" type="button">이벤트 추가 대기중...</button>
+      <button type="button" data-role="once-event">1회만 이벤트 설정</button>
     </div>
 
     <main hidden>
+      <div class="practice">
+        <form>
+          <div>
+            <label for="username">이름</label>
+            <input id="username" type="text" placeholder="이름을 입력하세요." />
+          </div>
+          <div>
+            <label for="meal">식사</label>
+            <select id="meal">
+              <option>식사 종류</option>
+              <option value="breakfast">아침</option>
+              <option value="lunch">점심</option>
+              <option value="dinner">저녁</option>
+            </select>
+          </div>
+          <button type="button">인사하기</button>
+        </form>
+        <p>인사말 출력</p>
+      </div>
       <!-- 얼리 리턴 -->
       <div class="practice1">
         <form>
