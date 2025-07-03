@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/styles/main.css" />
     <link rel="icon" href="./assets/images/ecmascript-logo.png" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap/dist/gsap.min.js"></script>
     <script
       type="module"
       src="./assets/scripts/learn/55-default-parameters.js"
@@ -16,23 +17,33 @@
   </head>
 
   <body>
-    <h1 id="static">JavaScript 학습</h1>
-
-    <header>
-      <button type="button">test</button>
-    </header>
-    <div
-      id="controller"
-      role="group"
-      style="display: flex; gap: 4px; margin-block: 12px"
-    >
-      <button type="button" data-role="add-event">이벤트 추가</button>
-      <button type="button" data-role="remove-event">이벤트 제거</button>
-      <button data-role="tester" type="button">이벤트 추가 대기중...</button>
-      <button type="button" data-role="once-event">1회만 이벤트 설정</button>
-    </div>
+    <!-- <h1 id="static">JavaScript 학습</h1> -->
+    <h1 id="static">
+      <a
+        href="https://developer.mozilla.org/ko/docs/Web/JavaScript"
+        target="_blank"
+        rel="noopener noreferrer"
+        lang="en"
+      >
+        JavaScript
+      </a>
+    </h1>
 
     <main hidden>
+      <!-- 기본 매개변수 -->
+      <header>
+        <button type="button">test</button>
+      </header>
+      <div
+        id="controller"
+        role="group"
+        style="display: flex; gap: 4px; margin-block: 12px"
+      >
+        <button type="button" data-role="add-event">이벤트 추가</button>
+        <button type="button" data-role="remove-event">이벤트 제거</button>
+        <button data-role="tester" type="button">이벤트 추가 대기중...</button>
+        <button type="button" data-role="once-event">1회만 이벤트 설정</button>
+      </div>
       <div class="practice">
         <form>
           <div>
