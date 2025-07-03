@@ -31,9 +31,26 @@
       // 객체에서 `name`, `email`을 구조 분해 할당으로 꺼내어 DOM에 출력해 보세요.
       
       const user = {
-        name: '김지수',
-        email: 'jisu@example.com',
+        name: '우진',
+        email: 'aastu4343@gmail.com',
       }
+
+      // DOM 찾기
+      const practice = document.getElementById('practice1')
+
+      const table = practice.querySelector('.user-info')
+      const tableCellDatas = [...table.querySelectorAll('td')]
+
+      const [nameCell, emailCell] = tableCellDatas
+
+      // user 구조 분해 할당
+
+      const {name : nameValue = 'user', email : emailValue = 'email@mail.com'} = user
+
+      // Update DOM
+      nameCell.textContent = nameValue
+      emailCell.textContent = emailValue
+
     }
   </script>
 </body>
