@@ -1,32 +1,36 @@
 {
-  const accordionContainer = document.querySelector('.accordion__container')
-  const links = accordionContainer.querySelectorAll('.accordion a')
-  const OPENED_CLASSNAME = 'is-open'
+  const accordionContainer = document.querySelector(".accordion__container");
+  const links = accordionContainer.querySelectorAll(".accordion a");
+  const OPENED_CLASSNAME = "is-open";
 
   for (const link of links) {
-    link.setAttribute('tabindex', '-1')
+    link.setAttribute("tabindex", "-1");
   }
-  
-  accordionContainer.addEventListener('click', (e) => {
-    const button = e.target.closest('.accordion')
 
-    if (button) { 
-      const accordion = button.closest('.accordion')
-      const accordionInner = accordion.querySelector('.accordion__inner')
-      const heightValue = accordionInner.getBoundingClientRect().height
+  // 구조 분해 할당
+  accordionContainer.addEventListener("click", ({ target }) => {
+    const button = target.closest("button");
 
-      const accordionContent = accordionInner.parentElement
-      const link = accordionInner.querySelector('a')
-      
-      if (!accordion.classList.contains(OPENED_CLASSNAME)) {
-        accordionContent.style.setProperty('height', heightValue + 'px')
-        link.removeAttribute('tabindex')
-      } else {
-        accordionContent.style.setProperty('height', 0)
-        link.setAttribute('tabindex', '-1')
-      }
-      
-      accordion.classList.toggle(OPENED_CLASSNAME)
-    }
-  })
+    // 빠른 반환
+    if (!button) return;
+    const accordion = button.closest(".accordion");
+    const accordionInner = accordion.querySelector(".accordion__inner");
+    const heightValue = accordionInner.getBoundingClientRect().height;
+
+    const accordionContent = accordionInner.parentElement;
+    const link = accordionInner.querySelector("a");
+
+    // 삼항 연산자 식
+    // 템플릿 리터럴
+    const isOpened = accordion.classList.contains(OPENED_CLASSNAME);
+    accordionContent.style.setProperty(
+      "height",
+      isOpened ? 0 : `${heightValue}px`
+    );
+    isOpened
+      ? link.setAttribute("tabindex", "-1")
+      : link.removeAttribute("tabindex");
+
+    accordion.classList.toggle(OPENED_CLASSNAME);
+  });
 }
