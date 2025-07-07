@@ -38,10 +38,22 @@
   };
 
   // 실습 2. 국적 일치, 사용자 이름 출력
-  (() => {
+  () => {
     let nationality = "아프리카";
 
     const foundUser = users.find((user) => user.nationality === nationality);
     console.log(foundUser ? foundUser.name : "그런 사람 없습니다.");
+  };
+
+  // 살숩 3. 국적 일치, 사용자 그룹 출력
+  // - `users` 배열의 각 항목과 비교해 일치할 경우, 국적을 필터링한 사용자 그룹 출력
+  // - `<option>` 요소의 `value` 값이 빈 문자열인 경우, 모든 사용자를 포함한 그룹 출력
+  // - 사용자 그룹 출력 시, `JSON.stringify(filteredUsers, null, 2)` 구문 활용
+  (() => {
+    let nationality = "대한민국";
+    const filteredUsers = users.filter(
+      (nation) => nation.nationality === nationality
+    );
+    console.log(JSON.stringify(filteredUsers, null, 2));
   })();
 }
