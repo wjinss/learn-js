@@ -61,7 +61,7 @@ function getPearCount(fruitsBasket) {
 //    - Object.values()
 //    - Object.keys()
 // --------------------------------------------------------------------------
-(() => {
+() => {
   const numbers = [10, 11, 12, 13, 14, 15];
 
   // 13의 인덱스 가져오기
@@ -258,7 +258,7 @@ function getPearCount(fruitsBasket) {
 
     console.log(subjectCountObject);
   })();
-})();
+};
 
 // --------------------------------------------------------------------------
 // 📌 실습
@@ -266,7 +266,7 @@ function getPearCount(fruitsBasket) {
 
 // 출석 체크된 학생 수 세기
 // 출석한 학생만 골라서 출석자 수를 계산해 콘솔 패널에 출력해보세요.
-() => {
+(() => {
   const students = [
     { id: 1, name: "김지훈", email: "jihun.kim@example.com", isPresent: true },
     {
@@ -303,15 +303,21 @@ function getPearCount(fruitsBasket) {
   console.log(students);
 
   // 1. 명령형 코드
-  (() => {})();
+  () => {
+    // 새 배열 생성 변수에 참조
+    // for문 사용
+  };
 
   // 2. 선언적 코드
-  () => {};
-};
+  (() => {
+    const Attendance = students.filter(({ isPresent }) => isPresent);
+    console.log(Attendance.length);
+  })();
+})();
 
 // 판매 가능한 상품명 출력
 // 재고가 있는 상품만 걸러내 상품명을 콘솔 패널에 출력하세요.
-() => {
+(() => {
   const products = [
     { id: 1, name: "파운데이션", stock: 5, price: 32000 },
     { id: 2, name: "블러셔", stock: 0, price: 17000 },
@@ -327,9 +333,13 @@ function getPearCount(fruitsBasket) {
 
   console.log(products);
 
-  // 1. 명령형 코드
-  (() => {})();
+  // 1. 선언적 코드
+  (() => {
+    const filteredProducts = products.filter(({ stock }) => stock > 0);
 
-  // 2. 선언적 코드
-  () => {};
-};
+    console.log(filteredProducts);
+
+    filteredProducts.forEach(({ name }) => console.log(name));
+  })();
+  // 2. 명령형 코드
+})();
