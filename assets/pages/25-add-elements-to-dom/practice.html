@@ -364,17 +364,21 @@
         // }, "");
         // virtualDOM.insertAdjacentHTML("beforeend", reviewTemplate);
 
+        // 메뉴 배열 순회 후 li에 콘텐츠 내용을 넣어서 반환
         const reviews = newReviews.map(({ content }) => {
           const element = document.createElement("li");
           element.textContent = content;
           return element;
         });
+
+        // 가상 DOM에 li{content} 넣기
         const fragment = document.createDocumentFragment();
         fragment.append(...reviews);
 
         document
           .querySelector("#practice3 button")
           .addEventListener("click", (e) => {
+            // 버튼의 옆 요소인 ul의 첫 번째 자식으로 가상 DOM에 넣은 li{content}를 DOM으로 넣음
             e.currentTarget.nextElementSibling.prepend(...fragment.children);
           });
       })();
