@@ -67,10 +67,41 @@
   list.append(...appendElements);
 
   // before()
+  const beforeElements = [
+    createElement("li", "before content 1."),
+    createElement("li", "before content 2"),
+  ];
+
+  const beforeTargetElement = list.children[4];
+  beforeTargetElement.before(...beforeElements);
 
   // after()
+  const afterElements = [
+    createElement("li", "after content 1."),
+    createElement("li", "after content 2"),
+  ];
+
+  const afterTargetElement = list.children[6];
+  afterTargetElement.after(...afterElements);
 
   // insertAdjacentElement()
+  const elementInfo = {
+    position: "afterend",
+    element: createElement(
+      "span",
+      "인접한 요소로 삽입(insert Adjacent Element)"
+    ),
+  };
 
-  // insertAdjacentHTML()
+  const h1 = document.querySelector("h1");
+  h1.insertAdjacentElement(elementInfo.position, elementInfo.element);
+
+  // insertAdjacentHTML(position, HTML Code)
+  const h2 = document.querySelector("h2");
+  h2.insertAdjacentHTML(
+    "afterbegin",
+    `
+    <strong>🥘</strong>
+    `
+  );
 })();
