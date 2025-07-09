@@ -107,6 +107,7 @@
               ? headlines[index]
               : `더 이상 표시할 제목이 없습니다`;
         });
+        button.click();
       })();
     </script>
 
@@ -121,10 +122,23 @@
       // 실습 2. 카드 추가
       // 사용자가 버튼을 클릭하면 프로필 카드가 화면에 표시되도록 구현합니다.
       (() => {
-        const cardTemplate = `
+        const practice = document.getElementById("practice2");
+        const addCardButton = practice.querySelector("button");
+        const profileCard = practice.querySelector(".profile-card");
+
+        addCardButton.addEventListener(
+          "click",
+          () => {
+            const cardTemplate = `
           <h2>박상현</h2>
           <p>프론트엔드 개발자</p>
         `;
+            profileCard.innerHTML = cardTemplate;
+
+            // addCardButton.disabled = true;
+          },
+          { once: true }
+        );
       })();
     </script>
   </body>
