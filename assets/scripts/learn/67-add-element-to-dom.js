@@ -4,7 +4,7 @@
 
 // 요소 동적 생성(create element)
 
-(() => {
+() => {
   // 동적 생성된 요소들을 마운트할 요소
   const mountElement = document.querySelector(".mount");
 
@@ -40,4 +40,15 @@
   // 요소를 부모 요소의 마지막 자식으로 추가(append child)
   mountElement.appendChild(sectionElement);
   mountElement.appendChild(tableElement);
+};
+
+(() => {
+  const ol = document.querySelector(".ramen-cooking-recipe");
+
+  // DOM에 <li> 요소를 생성한 다음 `맛있게 먹습니다` 텍스트 추가
+  const listItem = document.createElement("li");
+  listItem.textContent = `맛있게 먹습니다`;
+
+  // 생성된 <li> 요소를 ol 참조 요소 내부 마지막 자식으로 삽입
+  ol.appendChild(listItem);
 })();
