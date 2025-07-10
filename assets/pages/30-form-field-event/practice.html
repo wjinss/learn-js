@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ko-KR">
-
   <head>
     <title>폼 필드 이벤트</title>
     <style>
@@ -30,9 +29,8 @@
   </head>
 
   <body>
-
     <section id="practice1">
-      <form id="form-agreement">
+      <form id="form-agreement" novalidate>
         <h2>약관 동의</h2>
         <div class="checkbox">
           <input type="checkbox" id="terms" required />
@@ -54,19 +52,56 @@
       // 실습 1. 가입 동의 체크박스
       // - 필수 항목이 2개 모두 체크되지 않을 경우, 사용자에게 얼럿(alert) 창을 띄워 경고합니다.
       // - 마케팅 동의 여부를 콘솔 패널에 출력합니다.
-      ;(() => {
-        
+      (() => {
+        const agreementForm = document.getElementById("form-agreement");
 
+        agreementForm.addEventListener("submit", (e) => {
+          // 기본 동작 방지
+          e.preventDefault();
 
-      })()
+          const form = e.currentTarget;
+          const checkboxes = [...form.querySelectorAll(`[type="checkbox"]`)];
+          // 필수 체크박스 필터링 후, 체크 상태 확인 및 그 개수가 2개인지 검토
+          const requiredCheckboxes = checkboxes.filter(
+            (checkbox) => checkbox.required && checkbox.checked
+          ).length;
+
+          if (requiredCheckboxes < 2) {
+            return alert(`필수 동의가 필요한 항목에 모두 체크하세요`);
+          }
+
+          // requiredCheckboxes < 2 &&
+          //   alert(`필수 동의가 필요한 항목에 모두 체크하세요`);
+
+          // 마케팅 동의 체크박스
+          const marketingCheckbox = checkboxes.at(-1);
+          console.log(
+            marketingCheckbox.checked
+              ? `마케팅 수신 동의`
+              : `마케팅 수신 동의 안함`
+          );
+        });
+      })();
     </script>
 
     <hr />
 
     <section id="practice2">
-      <form id="email-form">
+      <form
+        id="email-form"
+        novalidate
+        style="display: flex; align-items: start; gap: 8px"
+      >
         <label for="email">이메일</label>
-        <input type="email" id="email" placeholder="example@mail.com" />
+        <span style="display: flex; flex-direction: column; gap: 4px">
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="example@mail.com"
+          />
+          <span role="alert" style="color: red; font-size: 12px"></span>
+        </span>
         <button type="submit">전송</button>
       </form>
     </section>
@@ -75,11 +110,23 @@
       // 실습 2. 이메일 주소 유효성 검사
       // - `@`, `.` 포함 여부를 체크해 유효성 검사를 수행합니다.
       // - 유효하지 않을 경우 테두리 색상을 붉게 표시하고, 오류 메시지를 화면에 출력합니다.
-      ; (() => {
-        
+      (() => {
+        const form = document.getElementById("email-form");
 
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
 
-      })()
+          const userInputEmail = form.email.value.trim();
+
+          if (!userInputEmail.includes("@") || !userInputEmail.includes(".")) {
+            return alert(
+              "유효한 이메일 주소를 입력해야 합니다.\n예) user@company.com"
+            );
+          }
+
+          console.log(`전송된 이메일 주소 =${userInputEmail}`);
+        });
+      })();
     </script>
 
     <hr />
@@ -107,11 +154,7 @@
       // 실습 3. 좋아하는 과일 체크 (복수 선택 가능)
       // - `선택 완료` 버튼을 누르면, 사용자에 의해 체크된 과일들을 배열로 수집합니다.
       // - 수집된 과열 이름 배열을 콘솔 패널에 출력합니다.
-      ; (() => {
-        
-
-
-      })()
+      (() => {})();
     </script>
 
     <hr />
@@ -135,11 +178,7 @@
       // 실습 4. 젠더 라디오 버튼 체크
       // - `제출` 버튼을 누르면, 사용자에 의해 체크된 성별(gender) 값을 읽습니다.
       // - 읽은 성별 값을 콘솔 패널에 출력합니다.
-      ; (() => {
-        
-
-
-      })()
+      (() => {})();
     </script>
 
     <hr />
@@ -147,7 +186,11 @@
     <section id="practice5">
       <form id="review-form">
         <label for="review">리뷰 작성</label>
-        <textarea id="review" rows="4" placeholder="리뷰를 작성하세요."></textarea>
+        <textarea
+          id="review"
+          rows="4"
+          placeholder="리뷰를 작성하세요."
+        ></textarea>
         <button type="submit">등록</button>
       </form>
     </section>
@@ -156,13 +199,7 @@
       // 실습 5. 리뷰 작성 폼
       // - `등록` 버튼을 누르면, 사용자가 입력한 리뷰 값을 가져옵니다.
       // - 가져온 리뷰 값을 콘솔 패널에 출력합니다.
-      ; (() => {
-        
-        
-
-      })()
+      (() => {})();
     </script>
-
   </body>
-
 </html>
