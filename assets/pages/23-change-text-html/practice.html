@@ -95,18 +95,29 @@
         let lastIndex = headlines.length - 1;
 
         button.addEventListener("click", () => {
-          // if (index === lastIndex) {
-          //   headline.textContent = `더 이상 표시할 제목이 없습니다`;
-          //   return;
-          // }
-          // headline.textContent = headlines[index];
-          // index++;
+          // 추가적으로 현재 코드는 버튼을 누를때마다
+          // index가 1씩 증가하여 바로 다음줄의 제목이 출력되고있는데,
+          // sequencialOutput()
 
+          // 실습 제목에 적혀있듯이 '랜덤' 으로 제목이 나오게 하는 방법도 있는지 궁금합니다!
+          randomOutput();
+        });
+
+        function randomOutput() {
+          // 랜덤 숫자(정수) 값을 생성하는 코드 작성
+          // 난수를 생성하는 방법
+          const randomIndex = Math.floor(headlines.length * Math.random());
+          console.log("randomIndex = %s", randomIndex);
+          headline.textContent = headlines[randomIndex];
+        }
+
+        function sequencialOutput() {
           headline.textContent =
             index++ <= lastIndex
               ? headlines[index]
-              : `더 이상 표시할 제목이 없습니다`;
-        });
+              : "더 이상 표시할 제목이 없습니다.";
+        }
+
         button.click();
       })();
     </script>
@@ -120,25 +131,27 @@
 
     <script>
       // 실습 2. 카드 추가
-      // 사용자가 버튼을 클릭하면 프로필 카드가 화면에 표시되도록 구현합니다.
+      // 사용자가 "카드 추가" 버튼을 클릭하면
+      // 프로필 카드가 화면에 표시되도록 구현합니다.
       (() => {
         const practice = document.getElementById("practice2");
-        const addCardButton = practice.querySelector("button");
-        const profileCard = practice.querySelector(".profile-card");
+        const card = practice.querySelector(".profile-card");
+        const button = card.previousElementSibling;
 
-        addCardButton.addEventListener(
+        button.addEventListener(
           "click",
           () => {
             const cardTemplate = `
-          <h2>박상현</h2>
-          <p>프론트엔드 개발자</p>
-        `;
-            profileCard.innerHTML = cardTemplate;
-
-            // addCardButton.disabled = true;
+            <h2>박상현</h2>
+            <p>프론트엔드 개발자</p>
+          `;
+            card.innerHTML = cardTemplate;
+            // button.disabled = true
           },
           { once: true }
         );
+
+        // button.click()
       })();
     </script>
   </body>
