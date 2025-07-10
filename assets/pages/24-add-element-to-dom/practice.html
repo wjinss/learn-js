@@ -78,7 +78,7 @@
         const form = practice.querySelector("form");
         // const todoInput = form.elements[0];
         const [todoInput] = form.elements;
-        const todoList = form.nextElementSibling;
+        const todoList = form.nextElementSibling; // ul요소
 
         form.addEventListener("submit", (e) => {
           // 기본 작동 방지
@@ -164,19 +164,6 @@
       // "포도" 앞에 "망고"를 삽입
       // 1회만 클릭 이벤트가 작동
       (() => {
-        // const practice = document.getElementById("practice3");
-        // const button = practice.querySelector("button");
-        // console.dir(practice.children);
-        // const fruitsILike = practice.children[2];
-        // const fruitsIDontLike = practice.children[4];
-
-        // button.addEventListener("click", () => {
-        //   const mango = fruitsILike.lastElementChild;
-        //   console.log(mango);
-
-        //   fruitsIDontLike.appendChild(firstFruit);
-        // });
-
         const ilikeFruits = document.querySelector(".fruits-i-like");
         const idontlikeFruits = document.querySelector(".fruits-i-dont-like");
         const button = document.querySelector("#practice3 button");
@@ -190,6 +177,19 @@
           },
           { once: true }
         );
+
+        // const practice = document.getElementById("practice3");
+        // const button = practice.querySelector("button");
+        // console.dir(practice.children);
+        // const fruitsILike = practice.children[2];
+        // const fruitsIDontLike = practice.children[4];
+
+        // button.addEventListener("click", () => {
+        //   const mango = fruitsILike.lastElementChild;
+        //   console.log(mango);
+
+        //   fruitsIDontLike.appendChild(firstFruit);
+        // });
       })();
     </script>
   </body>

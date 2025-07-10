@@ -41,7 +41,17 @@
   mountElement.appendChild(sectionElement);
   mountElement.appendChild(tableElement);
 };
+// 연습 ---------------------------------------------
+() => {
+  const mountEle = document.querySelector(".mount");
 
+  const sectionEle = document.createElement("section");
+  sectionEle.classList.add("section");
+  sectionEle.dataset.category = `러닝`;
+  sectionEle.textContent = "힘들다";
+  sectionEle.innerHTML = `<h2>${sectionEle.textContent}</h2>`;
+};
+// ---------------------------------------------
 // 라면 레시피 완성하기
 () => {
   const ol = document.querySelector(".ramen-cooking-recipe");
@@ -53,7 +63,15 @@
   // 생성된 <li> 요소를 ol 참조 요소 내부 마지막 자식으로 삽입
   ol.appendChild(listItem);
 };
+// 연습 ---------------------------------------------
+() => {
+  const ol = document.querySelector(".ramen-cooking-recipe");
+  const liItem = document.createElement("li");
+  liItem.textContent = "라면 끓이는 내용";
 
+  ol.appendChild(liItem);
+};
+// ---------------------------------------------
 // 요소 위치 변경 (appendChild 활용)
 () => {
   const button = document.querySelector("button");
@@ -69,6 +87,18 @@
   });
 };
 
+//연습 ---------------------------------------------
+() => {
+  const btn = document.querySelector("button");
+  const section = document.querySelector("section");
+  const [likeFruitsList, unlikeFruitsList] = section.children; // children은 html컬렉션 객체를 반환
+  btn.addEventListener("click", () => {
+    const firstFruit = likeFruitsList.firstElementChild;
+    if (!firstFruit) return;
+    unlikeFruitsList.appendChild(firstFruit);
+  });
+};
+// ---------------------------------------------
 // 특정 요소 앞에 생성된 요소 삽입
 (() => {
   const ramenCookingRecipe = document.querySelector(".ramen-cooking-recipe");
@@ -85,6 +115,19 @@
   targetElement.parentElement.insertBefore(insertItem, targetElement);
 })();
 
+//연습 ---------------------------------------------
+() => {
+  const ramenRecipe = document.querySelector(".ramen-cooking-recipe");
+  const [, , targetElement] = ramenRecipe.children;
+
+  const insertItem = document.createElement("li");
+  insertItem.textContent = "면넣끓";
+
+  targetElement.parentElement.insertBefore(insertItem, targetElement);
+  //parentElement의 자식 중 targetElement 바로 앞에 insertItem를 추가
+};
+// ---------------------------------------------
+
 // 문서에 존재하는 요소를 목표 요소 앞에 추가
 (() => {
   const ramenCookingRecipe = document.querySelector(".ramen-cooking-recipe");
@@ -100,3 +143,10 @@
   // 삽입할 요소를 대상 앞에 삽입
   ramenCookingRecipe.insertBefore(insertRecipe, targetRecipe);
 })();
+//연습 ---------------------------------------------
+const ramenRecipe = document.querySelector(`.ramen-cooking-recipe`);
+
+const insetRecipe = ramenRecipe.firstElementChild;
+const targetRecipe = ramenRecipe.lastChild;
+ramenRecipe.insertBefore(insetRecipe, targetRecipe);
+//---------------------------------------------

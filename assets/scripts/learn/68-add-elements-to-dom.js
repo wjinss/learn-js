@@ -29,7 +29,7 @@
 };
 
 // 요소(Element) 객체의 유용한 메서드
-() => {
+(() => {
   const list = document.querySelector(".ramen-cooking-recipe");
   // prepend()
   // 부모 요소의 첫 번째 자식 요소로 삽입
@@ -104,7 +104,65 @@
     <strong>🥘</strong>
     `
   );
-};
+})()
+// 연습 -----------------------------------
+  ()=> { 
+  const list = document.querySelector('.ramen-cooking-recipe')
+
+  // li생성 함수
+  const createEle = (tagName, text) => { 
+    const element = document.createElement(tagName)
+    element.textContent = text
+    return element
+  }
+
+  const prependElement = [
+    createEle('li', `맛있는 면을 ~~1`),
+    createEle('li', `맛있는 면을 ~~2`),
+    createEle('li', `맛있는 면을 ~~2`)
+  ]
+
+  list.prepend(...prependElement)
+  // 스프레드 연산자를 사용해서 새로운 배열 반환
+
+  const appendElement = [
+    createEle('li', `맛있는 면을 ~~1`),
+    createEle('li', `맛있는 면을 ~~2`),
+    createEle('li', `맛있는 면을 ~~2`)
+  ]
+
+  list.append(...appendElement)
+  // 스프레드 연산자를 사용해서 새로운 배열 반환
+
+  const beforElement = [
+    createEle('li', `before content 1`),
+    createEle('li', `before content 2`),
+  ]
+
+  list.before(...beforElement)
+
+  const afterElement = [
+    createEle('li', `after content 1`),
+    createEle('li', `after content 2`),
+  ]
+
+  list.after(...afterElement)
+
+  const eleInfo = {
+    position: 'afterend',
+    element : createEle(`span`, `인접한 요소로 삽입, 인서트어듲센트 엘리먼트`)
+  }
+
+  const {position, element } = eleInfo
+
+
+  const h1 = document.querySelector('h1')
+  h1.insertAdjacentElement(position, element)
+
+  const h2 = document.querySelector(`h2`)
+  h2.insertAdjacentHTML('beforebegin', `<strong>🥘</strong>`)
+  }
+// -----------------------------------
 
 // 여러 요소를 DOM에 추가할 때
 // innerHTML 사례
@@ -139,7 +197,7 @@
 
 // 여러 요소를 DOM에 추가할 때
 // DocumentFragment 활용 사례
-(() => {
+() => {
   const listElement = document.querySelector(".ramen-cooking-recipe");
 
   // 문서 조각 객체 생성
@@ -162,4 +220,28 @@
   });
 
   listElement.append(...fragment.children);
-})();
+};
+
+// 연습 ---------------------------------
+() => { 
+  const listElement = document.querySelector(".ramen-cooking-recipe");
+
+  const fragment = document.createDocumentFragment()
+
+  const recipeList = [
+    "면이 익으면 불을 끄고 그릇에 옮깁니다.",
+    "물을 냄비에 붓고 끓입니다 (약 500ml)",
+    "물이 끓으면 스프를 먼저 넣습니다.",
+    "취향에 따라 파, 계란, 치즈 등을 추가합니다.",
+    "호호 불며 맛있게 먹습니다.",
+  ];
+
+  recipeList.forEach((recipe) => { 
+    const liItem = document.createElement('li')
+    liItem.textContent = recipe
+    fragment.appendChild(liItem)
+
+  })
+  listElement.append(...fragment.children)
+}
+// ---------------------------------
