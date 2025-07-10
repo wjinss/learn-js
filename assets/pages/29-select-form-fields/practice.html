@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ko-KR">
-
   <head>
     <title>JavaScript로 폼 필드 선택</title>
     <style>
@@ -30,7 +29,6 @@
   </head>
 
   <body>
-
     <section id="practice1">
       <form id="login-form">
         <div class="form-field">
@@ -47,13 +45,23 @@
 
     <script>
       // 실습 1. 로그인 폼
-      // 로그인 폼에 사용자가 입력한 아이디, 비밀번호 값을 읽어와 콘솔 패널에 출력합니다. 
+      // 로그인 폼에 사용자가 입력한 아이디, 비밀번호 값을 읽어와 콘솔 패널에 출력합니다.
       // form.elements 활용
-      ;(() => {
-        
+      (() => {
+        const form = document.getElementById("login-form");
 
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
 
-      })()
+          const [idInput, passwordInput] = form.elements;
+          const [id, password] = [
+            idInput.value.trim(),
+            passwordInput.value.trim(),
+          ];
+
+          console.log({ id, password });
+        });
+      })();
     </script>
 
     <hr />
@@ -74,13 +82,23 @@
 
     <script>
       // 실습 2. 피드백 폼
-      // 보내기 버튼을 누르면 사용자가 입력한 이메일, 
+      // 보내기 버튼을 누르면 사용자가 입력한 이메일,
       // 피드백 내용을 읽어와 화면에 얼럿(alert) 창을 띄웁니다.
-      ; (() => {
-        
+      (() => {
+        const form = document.getElementById("feedback-form");
 
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
 
-      })()
+          const form = e.currentTarget;
+          const { email, feedback } = form;
+
+          window.alert(`
+      email: ${email.value.trim()}\n
+      feedback: ${feedback.value.trim()}
+    `);
+        });
+      })();
     </script>
 
     <hr />
@@ -88,7 +106,10 @@
     <section id="practice3">
       <form id="radio-check-form">
         <p>관심있는 프로그래밍 언어는?</p>
-        <label><input type="radio" name="lang" value="JavaScript" /> JavaScript</label>
+        <label
+          ><input type="radio" name="lang" value="JavaScript" />
+          JavaScript</label
+        >
         <label><input type="radio" name="lang" value="Python" /> Python</label>
         <label><input type="radio" name="lang" value="Java" /> Java</label>
         <button type="submit">선택 완료</button>
@@ -97,15 +118,17 @@
 
     <script>
       // 실습 3. 라디오 체크 폼
-      // 사용자가 관심있는 프로그래밍 언어를 체크한 후, 
+      // 사용자가 관심있는 프로그래밍 언어를 체크한 후,
       // 선택 완료 버튼을 누르면 체크된 값을 콘솔 패널에 출력합니다.
-      ; (() => {
-        
+      (() => {
+        const form = document.getElementById("radio-check-form");
 
-
-      })()
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const form = e.currentTarget;
+          console.log(form.lang.value);
+        });
+      })();
     </script>
-
   </body>
-
 </html>
