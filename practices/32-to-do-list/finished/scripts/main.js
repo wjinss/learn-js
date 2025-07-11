@@ -1,4 +1,6 @@
 (() => {
+  /*global DOMPurify*/
+
   // 문서에서 폼 요소 찾기
   const todoListForm = document.querySelector(".todolist");
   const todolist = todoListForm.querySelector(".todolist__tasks");
@@ -39,7 +41,7 @@
     const uniqueId = generalUniqueId(10);
 
     // 생성할 할 일 요소의 템플릿 구성 후, innerHTML으로 요소에 HTML 생성
-    taskElement.innerHTML = /*html*/ `
+    taskElement.innerHTML = DOMPurify.sanitize(/*html*/ `
     <input type="checkbox" id=${uniqueId} />
        <label for=${uniqueId}>
          <span class="task__checkmark" aria-hidden="true">
@@ -59,7 +61,7 @@
            <path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" />
          </svg>
        </button>
-     `;
+     `);
 
     // 생성된 새 할 일 함수 반환
     return taskElement;
