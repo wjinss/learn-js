@@ -165,5 +165,45 @@
     })
   );
 })();
-// 디바운싱 (Debouncing)
-(() => {})();
+// 디바운스 (Debounce)
+// 연속된 이벤트를 그룹화하여 마지막 이벤트 발생 후, 일정 시간이 지나면 한 번만 처리하는 기법입니다.
+// 검색 입력이나 자동 저장과 같은 기능에 유용합니다.
+(() => {
+  function debounce(callback, delay = 300) {
+    // 디바운싱을 위한 정리 변수
+    let cleanup; // undefined
+
+    // 이벤트 리스너
+    return function eventListener(...args /* 이벤트 객체 */) {
+      // 클린업(정리) - 이벤트 리스너가 호출될 때 마다 정리
+      clearTimeout(cleanup);
+
+      // 클린업 = 타임아웃 ID (양의 정수)
+      cleanup = setTimeout(() => {
+        // 이벤트 객체를
+        // 사용자가 전달한 콜백 함수에
+        // 전개해서 다시 전달
+        callback(...args);
+      }, delay);
+    };
+  }
+
+  let debounceInputCount = 0;
+  input.addEventListener(
+    "input",
+    debounce(() => {
+      console.log(
+        `%c디바운싱: 검색 입력 횟수 = ${debounceInputCount++}`,
+        "padding: 0.4px; background-color: black; color: white;"
+      );
+    }, 600)
+  );
+
+  const input = document.querySelector("input");
+
+  let inputCount = 0;
+
+  input.addEventListener("input", () => {
+    console.log("일반: 검색 입력 횟수 = " + inputCount++);
+  });
+})();
