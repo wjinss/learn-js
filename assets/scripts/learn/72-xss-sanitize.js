@@ -55,7 +55,7 @@
 };
 
 // 실습3
-(() => {
+() => {
   //사용자가 관심있는 프로그래밍 언어를 체크한 후, 선택 완료 버튼을 누르면 체크된 값을 콘솔 패널에 출력합니다.
   const form = document.getElementById("radio-check-form");
   const checkBoxes = [...form.querySelectorAll('[type="radio"]')];
@@ -75,4 +75,4 @@
   //   console.log(form.lang.value);
   //   //
   // });
-})();
+};
