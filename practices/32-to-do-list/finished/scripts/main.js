@@ -5,6 +5,21 @@
   const todoListForm = document.querySelector(".todolist");
   const todolist = todoListForm.querySelector(".todolist__tasks");
 
+  // 할 일 제거 버튼 찾기
+  const removeButtons = todolist.querySelectorAll("button");
+
+  // 찾은 제거 버튼들 순환
+  removeButtons.forEach((button) => {
+    // 할 일 제거 버튼 click 이벤트 리스너 추가 (개별)
+    button.addEventListener("click", (e) => {
+      const taskElement = e.currentTarget.closest(".task");
+      // 제거 방법1
+      // taskElement.parentElement.removeChild(taskElement);
+      // 제거 방법2
+      taskElement.remove();
+    });
+  });
+
   // 폼 요소에 submit이벤트 추가 > 클릭 또는 엔터 키를 모두를 처리하는 가장 좋은 방법은 폼의 submit 이벤트를 청취
   todoListForm.addEventListener("submit", (e) => {
     // 브라우저 기본 동작 방지
@@ -62,6 +77,8 @@
          </svg>
        </button>
      `);
+
+    // 생성된 li안에서 제거 버튼을 찾아서 버튼에 할 일 요소를 삭제하는 기능 추가
 
     // 생성된 새 할 일 함수 반환
     return taskElement;
