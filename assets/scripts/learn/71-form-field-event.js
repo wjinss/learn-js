@@ -39,7 +39,9 @@
   );
   emailInput.addEventListener("blur", () => console.log("[input] blur event"));
 };
-
+// 연습 ---------------------------------
+() => {};
+// ---------------------------------
 // 체크박스 (checkbox)
 // .value
 // .checked
