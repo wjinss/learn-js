@@ -1,8 +1,8 @@
 // --------------------------------------------------------------------------
-// 📌 JSON이란??
+// 📌 JSON (JavaScript Object Notation)
 // --------------------------------------------------------------------------
 
-(() => {
+() => {
   const macbookPro = {
     operatingSystem: "macOS Sequoia 15.5(24F74)",
     processor: "2.4GHz 8core Intel Core i9",
@@ -20,12 +20,10 @@
   console.log(jsonString); // JSON String
   // '{"operatingSystem":"macOS Sequoia 15.5(24F74)","processor":"2.4GHz 8core Intel Core i9","memory":64}'
 
-  // replacer 매개변수는 특정 키,벨류만 반환
   const jsonStringWithReplacer = JSON.stringify(macbookPro, ["memory"]);
   console.log(jsonStringWithReplacer); // JSON String
   // '{"memory":64}'
 
-  // space 매개변수는 간격을 조정할 수 있으며 개행이라고 생각하면 됨
   const jsonStringWithSpace = JSON.stringify(macbookPro, null, 2);
   console.log(jsonStringWithSpace); // JSON String
   // {
@@ -55,4 +53,43 @@
   );
 
   console.log(notebookInfo);
+};
+(() => {
+  const request = new XMLHttpRequest();
+
+  request.open("GET", "https://api.github.com/users/wjinss/repos");
+
+  request.send();
+
+  request.addEventListener("load", ({ target: xhr }) => {
+    const repos = JSON.parse(xhr.response);
+    console.log(repos);
+
+    // 데이터 정리 (Data Massaging)
+    // - 저장소 이름(`name`)
+    // - 저장소 공개 여부(`private`)
+    // - 저장소 URL (`html_url`)
+
+    const massagedRepos = repos.map((repo) => {
+      return {
+        name: repo.name,
+        private: repo.private,
+        url: repo.html_url,
+      };
+    });
+
+    // const massagedRepos = repos.map((repo) => ({
+    //   name: repo.name,
+    //   private: repo.private,
+    //   url: repo.html_url,
+    // }))
+
+    // const massagedRepos = repos.map(({ name, private, html_url: url }) => ({
+    //   name,
+    //   private,
+    //   url,
+    // }))
+
+    console.log(massagedRepos);
+  });
 })();
