@@ -187,6 +187,7 @@
       }, delay);
     };
   }
+  const input = document.querySelector("input");
 
   let debounceInputCount = 0;
   input.addEventListener(
@@ -198,8 +199,6 @@
       );
     }, 600)
   );
-
-  const input = document.querySelector("input");
 
   let inputCount = 0;
 
