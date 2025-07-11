@@ -5,21 +5,6 @@
   const todoListForm = document.querySelector(".todolist");
   const todolist = todoListForm.querySelector(".todolist__tasks");
 
-  // 할 일 제거 버튼 찾기
-  const removeButtons = todolist.querySelectorAll("button");
-
-  // 찾은 제거 버튼들 순환
-  removeButtons.forEach((button) => {
-    // 할 일 제거 버튼 click 이벤트 리스너 추가 (개별)
-    button.addEventListener("click", (e) => {
-      const taskElement = e.currentTarget.closest(".task");
-      // 제거 방법1
-      // taskElement.parentElement.removeChild(taskElement);
-      // 제거 방법2
-      taskElement.remove();
-    });
-  });
-
   // 폼 요소에 submit이벤트 추가 > 클릭 또는 엔터 키를 모두를 처리하는 가장 좋은 방법은 폼의 submit 이벤트를 청취
   todoListForm.addEventListener("submit", (e) => {
     // 브라우저 기본 동작 방지
@@ -36,15 +21,45 @@
 
     // 새로운 할 일 <li>요소 생성
     const newTask = creatTask(newTaskContenet);
-    console.log(newTask);
 
     // DOM 업데이트 (화면 변경)
-    // 생성된 할 일. ㅛ소를 목록의 마지막 자식 요소로 추가
+    // 생성된 할 일 요소를 목록의 마지막 자식 요소로 추가
     todolist.append(newTask);
 
     // 폼 입력 필드 초기화
     form.reset();
   });
+
+  // 생성된 li안에서 제거 버튼을 찾아서 버튼에 할 일 요소를 삭제하는 기능 추가
+
+  // 아벤트 위임을 사용해 동적 생성된 할 일 요소의 삭제 기능이 처리되도록 구현
+  todolist.addEventListener("click", ({ currentTarget: ul, target }) => {
+    const removeButton = target.closest(`[aria-label="할 일 삭제"]`);
+    if (!removeButton) return;
+
+    // 삭제 기능 작동 (할 일 요소 제거)
+    removeButton.closest(".task").remove();
+
+    // 할 일 목록 내부에 아무런 자식 요소가 없다면?
+    // ul 요소 내부의 공백이 없도록 구성해서
+    // 사용자에게 새 할 일 추가에 관한 안내 사항 표시
+    if (ul.children.length === 0) ul.innerHTML = "";
+  });
+
+  // 할 일 제거 버튼 찾기
+  // const removeButtons = todolist.querySelectorAll("button");
+
+  // 찾은 제거 버튼들 순환
+  // removeButtons.forEach((button) => {
+  //   // 할 일 제거 버튼 click 이벤트 리스너 추가 (개별)
+  //   button.addEventListener("click", (e) => {
+  //     const taskElement = e.currentTarget.closest(".task");
+  //     // 제거 방법1
+  //     // taskElement.parentElement.removeChild(taskElement);
+  //     // 제거 방법2
+  //     taskElement.remove();
+  //   });
+  // });
 
   // 새로운 할 일 생성 함수
   function creatTask(content) {
@@ -77,8 +92,6 @@
          </svg>
        </button>
      `);
-
-    // 생성된 li안에서 제거 버튼을 찾아서 버튼에 할 일 요소를 삭제하는 기능 추가
 
     // 생성된 새 할 일 함수 반환
     return taskElement;
