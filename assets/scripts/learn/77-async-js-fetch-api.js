@@ -124,6 +124,7 @@
   // 비동기 통신 이후, DOM 업데이트
   const reposList = document.querySelector(".repos-list");
 };
+
 () => {
   const promise = fetch("https://api.github.com/users/wjinss/repos");
 
@@ -158,7 +159,7 @@
 };
 
 // 코드 리팩토링
-(() => {
+() => {
   const reposList = document.querySelector(".repos-list");
   const promise = fetch("https://api.github.com/users/yamoo9999/repos");
 
@@ -198,6 +199,177 @@
         return `
         <li>
           <h3>${account}</h3>
+          <img src="${avatar}" alt="" height="40" width="40" />
+          <a href="${linkHref}">${linkContent}</a>
+          <p>${description}</p>
+        </li>
+      `;
+      })
+      .join("");
+  }
+
+  function updateDOM(template) {
+    reposList.innerHTML = DOMPurify.sanitize(template);
+  }
+
+  function catchError(error) {
+    console.error(error.message);
+  }
+
+  function runFinally() {
+    alert(
+      "데이터 요청/응답 성공 또는 실패와 상관없이 항상 최종적으로 이 코드는 실행됩니다."
+    );
+  }
+};
+
+// 연습1
+() => {
+  // 깃허브 레포를 fetch로 요청한 대답을 promise에 저장한다.
+  const promise = fetch("https://api.github.com/users/wjinss/repos");
+  promise
+    // 요청 받은 값을 json()으로 객체로 저장
+    .then((res) => res.json())
+    //저장된 객체에서 name, html_url, private를 따로 객체로 만들어서 저장
+    .then((data) =>
+      data.map((item) => {
+        return {
+          name: item.name,
+          url: item.html_url,
+          isPublic: !item.private,
+        };
+      })
+    )
+    // 추출된 객체를 massagedData에 저장
+    .then((massagedData) => {
+      console.log(massagedData);
+
+      const list = document.querySelector("ul");
+
+      list.innerHTML = massagedData
+        .map((repo) => {
+          return `
+        <li>
+          <a href="${repo.url}">
+            ${repo.name} (#${repo.isPublic ? "공개" : "비공개"})
+          </a>
+        </li>
+        `;
+        })
+        .join("");
+    });
+};
+
+//연습2
+() => {
+  const promise = fetch("https://api.github.com/users/wjinss/repos");
+
+  promise
+    .then((res) => res.json())
+    .then((resData) => {
+      const massagedData = resData.map(
+        ({ git_url, description, owner: { avatar_url, login } }) => {
+          return {
+            url: git_url,
+            description,
+            avatar: avatar_url,
+            login: login,
+          };
+        }
+      );
+
+      const listTemplate = massagedData
+        .map(({ url, description, avatar, login }) => {
+          const linkContent = url.replace("git://", "").replace(".git", "");
+          const linkHref = `https://${linkContent}`;
+          return `
+          <li>
+            <h3>${login}</h3>
+            <img src="${avatar}" alt="" height="80" width="80" />
+            <a href="${linkHref}">${linkContent}</a>
+            <p>${description}</p>
+          <li>
+          `;
+        })
+        .join("");
+
+      reposList.innerHTML = DOMPurify.sanitize(listTemplate);
+    });
+  const reposList = document.querySelector("ul");
+};
+
+// 연습3
+() => {
+  const promise = fetch("https://api.github.com/users/wjinss/repos");
+
+  promise
+    .then((res) => res.json())
+    .then((massagedData) => {
+      const data = massagedData.map(({ git_url, description }) => {
+        return {
+          url: git_url,
+          description,
+        };
+      });
+      const listTemplate = data
+        .map(({ url, description }) => {
+          const linkContent = url.replace("git://", "").replace(".git", "");
+          const linkHref = `https://${linkContent}`;
+          return `
+        <li>
+          <a href="${linkHref}">${linkContent}</a>
+          <p>${description}</p>
+        </li>
+      `;
+        })
+        .join("");
+
+      reposList.innerHTML = DOMPurify.sanitize(listTemplate);
+    });
+  const reposList = document.querySelector("ul");
+};
+
+// 연습 4
+(() => {
+  const reposList = document.querySelector("ul");
+  const promise = fetch("https://api.github.com/users/wjinss/repos");
+
+  promise
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("알 수 없는 오류가 발생했습니다");
+      }
+      return res.json();
+    })
+    .then(messageData)
+    .then(generateTemplate)
+    .then(updateDOM)
+    .catch(catchError)
+    .finally(runFinally);
+
+  function messageData(data) {
+    // 매개변수로 받은 data가 undefind, null이 아니면 map() 실행시키고,
+    //  map 다음으로 오는게 함수면 map()를 실행시켜라
+    return data?.map?.(
+      ({ git_url, description, owner: { avatar_url, login } }) => {
+        return {
+          url: git_url,
+          description,
+          avatar: avatar_url,
+          login: login,
+        };
+      }
+    );
+  }
+
+  function generateTemplate(data) {
+    return data
+      ?.map?.(({ url, description, avatar, login }) => {
+        const linkContent = url.replace("git://", "").replace(".git", "");
+        const linkHref = `https://${linkContent}`;
+        return `
+              <li>
+          <h3>${login}</h3>
           <img src="${avatar}" alt="" height="40" width="40" />
           <a href="${linkHref}">${linkContent}</a>
           <p>${description}</p>

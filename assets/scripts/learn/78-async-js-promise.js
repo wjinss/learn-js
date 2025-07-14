@@ -2,7 +2,7 @@
 // 📌 Promise
 // --------------------------------------------------------------------------
 
-(() => {
+() => {
   // 판매 가능한 케이크 상자
   const salableCakes = [
     "스트로베리 초코 생크림",
@@ -84,8 +84,53 @@
     // 생성된 Promise 객체 반환
     return promise;
   }
-})();
+};
+
 () => {
   const promise = fetch("https://api.github.com/users/yamoo9/repos");
   console.log(promise); // Promise {}
 };
+
+(() => {
+  const salableCakes = [
+    "스트로베리 초코 생크림",
+    "아이스 망고",
+    "블랙 포레스트",
+    "초코 무스",
+  ];
+
+  const promise = buyCake("초코 무스");
+
+  promise
+    .then((celebrateMessage) => `${celebrateMessage}!!!!`)
+    .then((newMessage) => `2025년 7월 15일 ${newMessage}`)
+    .then(console.log)
+    .catch((sorry) => {
+      throw new Error(`${sorry}`);
+    })
+    .finally(() => "케익을 샀든 말든 표시");
+
+  function buyCake(cakeName) {
+    const existCake = salableCakes.find((name) => name === cakeName);
+
+    const newPromise = new Promise((resolve, reject) => {
+      // if (existCake) {
+      //   resolve(`${cakeName} 케익을 구매할 수 있었습니다. 🎂 😊`)
+      // } else {
+      //   reject(new Error(`${cakeName} 케익 재고가 없다네요. 아쉽게도 구매할 수 없었습니다. 😢 ⁉️`))
+      // }
+
+      setTimeout(() => {
+        existCake
+          ? resolve(`${cakeName}을 구했어. 어서 빨리 고맙다고 해!!!`)
+          : reject(
+              new Error(
+                `${cakeName}를 구하지 못했어. 미안해 내가 죽을 되를 지었어`
+              )
+            );
+      }, 2000);
+    });
+
+    return newPromise;
+  }
+})();
