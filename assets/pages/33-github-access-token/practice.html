@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>GitHub 인증 실습</title>
+  </head>
+  <body>
+    <h1>📦 내 GitHub 저장소 목록 보기</h1>
+    <form>
+      <label for="github-personal-access-token">GitHub 개인 엑세스 토큰</label>
+      <input
+        type="text"
+        id="github-personal-access-token"
+        placeholder="GitHub 개인 엑세스 토큰 입력"
+        size="60"
+      />
+      <button type="submit">저장소 목록 가져오기</button>
+    </form>
+    <ul data-id="repoList"></ul>
+
+    <script>
+      // 여기에 코드를 작성합니다.
+
+      const GITHUB_API = "https://api.github.com/user/repos";
+      const form = document.querySelector("form");
+      const repoList = document.querySelector(".repoList");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const formEle = e.currentTarget;
+        const [tokenInput] = formEle.element;
+        const token = tokenInput.value.trim();
+
+        const repoList = getGitHubUserRepos(token);
+      });
+
+      function getGitHubUserRepos(token) {}
+    </script>
+  </body>
+</html>
