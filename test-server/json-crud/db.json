@@ -1,11 +1,42 @@
 {
   "users": [
-    { "id": 1, "name": "우진" },
-    { "id": 2, "name": "지수" }
+    {
+      "id": 1,
+      "name": "우진"
+    },
+    {
+      "id": 2,
+      "name": "지수"
+    },
+    {
+      "id": 3,
+      "name": "연희"
+    }
   ],
-  "product": [
-    { "id": 1, "name": "비빔면" },
-    { "id": 2, "name": "돈까스" },
-    { "id": 3, "name": "김밥" }
+  "products": [
+    {
+      "id": 1,
+      "name": "비빔면",
+      "price": 12000,
+      "userID": 1
+    },
+    {
+      "id": 2,
+      "name": "돈까스",
+      "price": 4000,
+      "userID": 2
+    },
+    {
+      "id": 3,
+      "name": "김밥",
+      "price": 2300,
+      "userID": 1
+    },
+    {
+      "id": 4,
+      "name": "오믈렛",
+      "price": 8800,
+      "userID": 3
+    }
   ]
 }
