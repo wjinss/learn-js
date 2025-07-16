@@ -7,7 +7,7 @@
 // 멀티 이미지 업로드 기능 구현
 () => {
   const IMGBB_API = "https://api.imgbb.com/1/upload";
-  const IMGBB_API_KEY = "IMGBB_API_KEY";
+  const IMGBB_API_KEY = "e1a3f86f504597ccbebe95da78c3631e";
   const IMGBB_EXPIRATION = 60 * 10 * 6; // 60분 만료 (삭제)
 
   const uploadForm = document.querySelector("form");
