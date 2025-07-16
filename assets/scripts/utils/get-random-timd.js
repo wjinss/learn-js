@@ -4,4 +4,4 @@ export function getRandomTime(min = 1000, max = 3000) {
   return Math.round(Math.random() * (max - min) + min);
 }
 
-const PI = 3.141592;
+export const PI = 3.141592;
