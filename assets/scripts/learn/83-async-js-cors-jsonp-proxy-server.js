@@ -6,7 +6,7 @@
 // 참고: https://getjsonip.com/
 const API_ENDPOINT = "https://jsonip.com";
 
-// CORS (Cross Origin Resource Sharing)
+// CORS (Cross Origin Resource Sharing) 정책에 의해 오류 발생
 () => {
   fetch(API_ENDPOINT)
     .then((response) => response.json())
@@ -24,14 +24,15 @@ const API_ENDPOINT = "https://jsonip.com";
    * JSONP를 사용해 API를 호출하는 함수
    *
    * @param {string} url API 서버 주소
-   * @param {string} callback API 응답을 전달받을 전역 함수 이름
+   * @param {string} callback API 응답을 전달받을 함수 -> 전역 함수로 설정
    */
   function jsonp(url, callback) {
     // 전역에 공개할 함수 이름을 동적으로 생성
     const fnName = `${url.replace(/^https:\/\/|\.[^./]+$/g, "")}Fn`;
 
     const script = document.createElement("script");
-    script.src = `${url}/${fnName}`;
+    script.setAttribute("src", `${url}/${fnName}`);
+    // script.src = `${url}/${fnName}`
 
     script.addEventListener("error", () => {
       console.error("문제가 발생했습니다. 나중에 다시 시도해주세요.");
@@ -39,7 +40,10 @@ const API_ENDPOINT = "https://jsonip.com";
 
     document.body.append(script);
 
+    // 전달된 callback 함수를 전역 함수로 공개
     globalThis[fnName] = callback;
+    // window['jsonipFn']
+    // window.jsonipFn = callback
   }
 };
 
@@ -53,7 +57,7 @@ const API_ENDPOINT = "https://jsonip.com";
    * 프록시 서버를 사용해 데이터를 페칭하는 함수
    *
    * @param {string} url API 서버 주소
-   * @returns {Promise<any>} IP 정보
+   * @returns {Promise<any>} Promise<데이터>
    */
   function fetchByProxy(url) {
     return fetch(`https://corsproxy.io/?url=${url}`).then((response) =>
@@ -66,7 +70,7 @@ const API_ENDPOINT = "https://jsonip.com";
 };
 
 // Proxy Server (로컬 서버 테스트)
-// - Node.js 환경에서 구동되는 프록시 서버
+// - Node.js 환경에서 구동되는 로컬 프록시 서버 (http://localhost:4000)
 // - 배포 시, 무료 사용 가능 (예: http://render.com)
 (() => {
   // GET 요청 테스트
@@ -126,12 +130,53 @@ const API_ENDPOINT = "https://jsonip.com";
       method: "GET",
       headers: { "Content-Type": "application/json" },
       ...config,
-    }).then((response) =>
-      response.json().then((responseData) => {
+    }).then((response) => {
+      const contentType = response.headers.get("content-type");
+      let methodName = "text";
+
+      if (contentType.includes("application/json")) {
+        methodName = "json";
+      }
+
+      if (
+        contentType.includes("image/") ||
+        contentType.includes("application/octet-stream")
+      ) {
+        methodName = "blob";
+      }
+
+      const resposeDataPromise = response[methodName]();
+
+      resposeDataPromise.then((responseData) => {
+        // 거절
         if (!response.ok)
           return Promise.reject(new Error(responseData.message));
+        // 이행
         return responseData;
-      })
-    );
+      });
+
+      return resposeDataPromise;
+    });
   }
+
+  const euid = {
+    get(url) {
+      return fetchByProxy(url);
+    },
+    post(url, data, config) {
+      return fetchByProxy(url, {
+        method: "POST",
+        body: JSON.stringify(data),
+        ...config,
+      });
+    },
+    put() {},
+    patch() {},
+    delete() {},
+  };
+
+  // 객체 동결(freezing)
+  Object.freeze(euid);
+
+  globalThis.euid = euid;
 })();
