@@ -13,13 +13,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.2.6/purify.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script
-      src="./assets/scripts/learn/84-async-js-ajax-library.js"
+      src="./assets/scripts/learn/85-async-js-file-upload.js"
       defer
     ></script>
   </head>
 
   <body>
     <h1>JavaScript</h1>
+
+    <form id="uploadForm" enctype="multipart/form-data">
+      <div>
+        <label for="image">이미지</label>
+        <input type="file" name="image" id="image" accept="image/*" multiple />
+      </div>
+      <div>
+        <button>업로드</button>
+      </div>
+    </form>
 
     <!-- <main hidden>
     <form hidden method="POST" action="http://localhost:4000/submit">
