@@ -81,9 +81,9 @@
 };
 
 // axios.delete(url[, config])
-(() => {
+() => {
   axios
     .delete("https://dummyjson.com/products/1")
     .then(({ data }) => console.log(data))
     .catch(console.error);
-})();
+};
