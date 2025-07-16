@@ -1,13 +1,15 @@
-/* global axios*/
-// ------------------------------------
-// 투 두 리스트 api
-// ------------------------------------
+// --------------------------------------------------------------------------
+// 📌 To do List API
+// --------------------------------------------------------------------------
+
+/* global axios */
+
 const TODOLIST_STORAGE_KEY = "@todolist";
 
 const TODOLIST_ENDPOINT = "https://todo-list-api-for-learning.onrender.com";
 
 const TODOLIST_TESTER = {
-  email: "user777@naver.com",
+  email: "user777naver.com",
   password: "user777",
 };
 
@@ -72,11 +74,45 @@ function authHeader() {
 };
 
 // 할 일 목록 조회
-(() => {
+() => {
   axios
     .get(`${TODOLIST_ENDPOINT}/todos`, {
       headers: { ...baseHeader(), ...authHeader() },
     })
     .then(({ data }) => console.log(data))
     .catch(console.error);
-})();
+};
+
+// 할 일 생성
+() => {
+  // axios.post(url[, data[, config]])
+  axios
+    .post(
+      // url
+      `${TODOLIST_ENDPOINT}/todos`,
+      // data
+      { todo: "다행히 수업을 정상적으로 할 수 있게 되었어요 🥹" },
+      // config
+      { headers: { ...baseHeader(), ...authHeader() } }
+    )
+    .then(({ data }) => console.log(data))
+    .catch(console.error);
+};
+
+// 할 일 수정 (부분)
+() => {
+  // 사용자가 체크박스를 눌렀을 때 서버에 부분 수정 요청
+  const todoId = "687745d87dd0e019d7b8a81e";
+
+  axios
+    .patch(
+      // url
+      `${TODOLIST_ENDPOINT}/todos/${todoId}`,
+      // data
+      { completed: true },
+      // config
+      { headers: { ...baseHeader(), ...authHeader() } }
+    )
+    .then(({ data }) => console.log(data))
+    .catch(console.error);
+};
