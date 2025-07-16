@@ -123,3 +123,118 @@
     }, 800);
   }
 })();
+
+//s
+(() => {
+  let data = [];
+  const form = document.querySelector("form");
+  const loadingElement = document.querySelector('[role="status"]');
+  const errorElement = document.querySelector('[role="alert"]');
+  const products = document.querySelector(".procuct");
+  const productCount = document.querySelector(".products-count");
+
+  const ENDPOINT = "https://dummyjson.com/c/1aa7-dc00-4ecf-af7c";
+
+  fetchShoppingData();
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    const [searchInput, categoryInput] = form.elements;
+    const search = searchInput.value.trim();
+    const category = categoryInput.value;
+
+    const filteredData = searchData(search, category);
+    renderView(filteredData);
+
+    form.reset();
+  });
+
+  function fetchShoppingData() {
+    // 로딩 상태 표시
+    initLoading();
+
+    fetch(ENDPOINT)
+      // 요청, 응답 처리
+      .then(handleResponse)
+      .then((resData) => {
+        data = resData;
+      })
+      // 데이터 정리 or 필터링
+      .then(searchData)
+      // DOM업데이트
+      .then(renderView)
+      // 오류 처리
+      .catch(handleError)
+      // 최종 처리
+      .finally(resetLoading);
+  }
+
+  // 로딩 시작
+  function initLoading() {
+    loadingElement.hidden = false;
+    loadingElement.textContent = `데이터 로딩이 시작되었습니다`;
+  }
+
+  // 응답 처리
+  function handleResponse(res) {
+    // 요청 응답이 실패한 경우
+    if (!res.ok) {
+      // 오류 객체 생성 후 자신의 상위 스코프로 전달
+      throw new Error(`${res.status} 해당 리소스를 찾을 수 없습니다`);
+    }
+
+    // 요청 응답에 성공한 경우
+    return res.json();
+  }
+
+  // 상품 검색 기능 : 검색어 query / 카테고리 category
+  function searchData(search = "", category = "") {
+    return data
+      .filter(({ title }) => {
+        title = title.toLowerCase();
+        if (title === "womens") return title.includes("womens");
+        return title.includes(category);
+      })
+      .map(({ items }) => items)
+      .flat()
+      .filter(({ name }) => name.toLowerCase().includes(search.toLowerCase()));
+  }
+
+  // 화면 렌더링
+  function renderView(data) {
+    const template = data.reduce((template, { id, imageUrl, name, price }) => {
+      return (
+        template +
+        `<li>
+          <figure data-product-id="${id}">
+            <img src="${imageUrl}" alt="" width="100" height="100" />
+            <figcaption>
+              <strong>${name}</strong><br />
+              <span>${price.toLocaleString()}원</span>
+            </figcaption>
+          </figure>
+        </li>`
+      );
+    }, "");
+
+    // DOM에 반영
+    products.innerHTML = template;
+
+    productCount.textContent = data.length;
+  }
+  // 오류 표시 기능
+  function handleError(error) {
+    errorElement.hidden = false;
+    errorElement.textContent = error.message;
+  }
+
+  // 로딩 초기 상태 복구 기능
+  function resetLoading() {
+    loadingElement.textContent = `데이터 로딩이 완료되었습니다`;
+    setTimeout(() => {
+      loadingElement.hidden = true;
+    }, 1000);
+  }
+})();
