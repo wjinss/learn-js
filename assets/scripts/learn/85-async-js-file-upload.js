@@ -5,7 +5,7 @@
 // --------------------------------------------------------------------------
 
 // 멀티 이미지 업로드 기능 구현
-(() => {
+() => {
   const IMGBB_API = "https://api.imgbb.com/1/upload";
   const IMGBB_API_KEY = "IMGBB_API_KEY";
   const IMGBB_EXPIRATION = 60 * 10 * 6; // 60분 만료 (삭제)
@@ -120,4 +120,6 @@
     // formData -> JavaScript Object
     console.log(Object.fromEntries(formData));
   }
-})();
+};
+
+// 로컬 스토리지 활용
